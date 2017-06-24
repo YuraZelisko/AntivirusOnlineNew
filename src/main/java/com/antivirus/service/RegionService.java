@@ -1,0 +1,18 @@
+package com.antivirus.service;
+
+import com.antivirus.entity.Region;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
+
+/**
+ * Created by User on 5/25/2017.
+ */
+public interface RegionService {
+
+    void save(Region region, MultipartFile image);
+    List<Region> findAll();
+    Region findOne(int id);
+    void delete(int id);
+    void update(Region region);
+}
