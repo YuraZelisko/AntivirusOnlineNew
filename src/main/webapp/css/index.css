@@ -1,15 +1,16 @@
 html,
 body {
-    margin: 0;
+    margin: 25px 0 0 0;
 }
 
 .hero {
-    background-size: 150%;
+    background-image: url("https://static3.esetstatic.com/fileadmin/Images/INT/styles/thank-you-for-downloading/v9/img/1/1024x768.jpg");
+    background-size: 100%;
     background-repeat: no-repeat;
     background-position: left;
     -webkit-animation: slide 40s ease;
     transform: translate3d(0,0,0);
-    height: 100vh;
+    height: 90%;
 }
 
 .hero:before {

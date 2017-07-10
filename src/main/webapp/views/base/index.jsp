@@ -1,8 +1,13 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<div class="hero" style="background-image: url(https://ununsplash.imgix.net/photo-1416339134316-0e91dc9ded92?q=75&fm=jpg&s=883a422e10fc4149893984019f63c818)">
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<link rel="stylesheet" href="/css/index.css">
+<div class="hero">
+
     <div class="hero__content">
-        <h1 style="color: white">Hello, welcome to our web-site.</h1>
-        <a style="color: white" class="btn" href="/registration">Sign up</a>
+        <h1 style="color: white"><spring:message code="label.Hello_welcome"/> </h1>
+        <a style="color: white" class="btn" href="/registration"><spring:message code="label.registration"/></a>
+        <%--<img src="https://static3.esetstatic.com/fileadmin/Images/INT/styles/thank-you-for-downloading/v9/img/1/1024x768.jpg" height="300" width="300">--%>
     </div>
 </div>
 

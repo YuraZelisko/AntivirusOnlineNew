@@ -1,6 +1,7 @@
 package com.antivirus.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -14,41 +15,43 @@ public class Product {
     private String description;
     private double price;
     private int quantityPC;
-    private boolean typeOfLinsence;
-    private int linseceDurationYears;
+    private int licenceDurationYears;
+
+
 
     @ManyToMany
     @JoinTable(name = "orders_product", joinColumns = @JoinColumn(name = "orders_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<Orders> orders;
+    private List<Orders> orders= new ArrayList();
 
     @ManyToMany
     @JoinTable(name = "delivery_product", joinColumns = @JoinColumn(name = "delivery_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<DeliveryType> deliveryTypes;
+    private List<DeliveryType> deliveryTypes= new ArrayList();
 
     @ManyToMany
     @JoinTable(name = "user_product", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<User> users;
+    private List<User> users= new ArrayList();
 
     @OneToMany (mappedBy = "product")
-    private List<ModulesIncluded> modulesIncludeds;
+    private List<ModulesIncluded> modulesIncludeds= new ArrayList();
 
     @OneToMany (mappedBy = "product")
-    private List<SystemRequirements> systemRequirements;
+    private List<SystemRequirements> systemRequirements= new ArrayList();
+
+    private String pathImage;
 
     public Product() {
     }
 
     public Product(String name, String description, double price,
-                   int quantityPC, boolean typeOfLinsence, int linseceDurationYears) {
+                   int quantityPC, int licenceDurationYears) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.quantityPC = quantityPC;
-        this.typeOfLinsence = typeOfLinsence;
-        this.linseceDurationYears = linseceDurationYears;
+        this.licenceDurationYears= licenceDurationYears;
     }
 
     public int getId() {
@@ -91,20 +94,12 @@ public class Product {
         this.quantityPC = quantityPC;
     }
 
-    public boolean isTypeOfLinsence() {
-        return typeOfLinsence;
+    public int getLicenceDurationYears() {
+        return licenceDurationYears;
     }
 
-    public void setTypeOfLinsence(boolean typeOfLinsence) {
-        this.typeOfLinsence = typeOfLinsence;
-    }
-
-    public int getLinseceDurationYears() {
-        return linseceDurationYears;
-    }
-
-    public void setLinseceDurationYears(int linseceDurationYears) {
-        this.linseceDurationYears = linseceDurationYears;
+    public void setLicenceDurationYears(int licenceDurationYears) {
+        this.licenceDurationYears = licenceDurationYears;
     }
 
     public List<Orders> getOrders() {
@@ -131,6 +126,22 @@ public class Product {
         this.modulesIncludeds = modulesIncludeds;
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public String getPathImage() {
+        return pathImage;
+    }
+
+    public void setPathImage(String pathImage) {
+        this.pathImage = pathImage;
+    }
+
     public List<SystemRequirements> getSystemRequirements() {
         return systemRequirements;
     }
@@ -147,8 +158,7 @@ public class Product {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", quantityPC=" + quantityPC +
-                ", typeOfLinsence=" + typeOfLinsence +
-                ", linseceDurationYears=" + linseceDurationYears +
+                ", linseceDurationYears=" + licenceDurationYears +
                 ", orders=" + orders +
                 ", deliveryTypes=" + deliveryTypes +
                 ", modulesIncludeds=" + modulesIncludeds +

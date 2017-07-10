@@ -1,6 +1,8 @@
 package com.antivirus.service;
 
 import com.antivirus.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
@@ -14,8 +16,16 @@ public interface UserService {
     List<User> findAll();
     User findOne(int id);
     void delete(int id);
+
     void update(User user);
 
     User findByUuid(String uuid);
 
+    Page<User> findAllPages(Pageable pageable);
+
+    User findUserWithOrders(int id);
+
+    User findUserWithProducts(@Param("id") int id);
+
+    void update(User user, String newPassword);
 }

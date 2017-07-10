@@ -10,45 +10,49 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
-<ul class="nav">
-    <div style="color: white">
-    <sec:authentication property="name"/>
-    </div>
+<div class="fixed-header">
+    <div class="container">
+        <nav>
+    <%--<div>--%>
+    <%--<sec:authentication property="name"/>--%>
+    <%--</div>--%>
     <%--<sec:authorize access="!isAuthenticated()">--%>
 
-    <li class="navItem"><a href="/"><spring:message code="label.home"/> </a></li>
+    <a href="/"><spring:message code="label.home"/> </a>
 
-    <li class="navItem"><a href="/registration"><spring:message code="label.registration"/></a></li>
+    <a href="/registration"><spring:message code="label.registration"/></a>
     <%--</sec:authorize>--%>
     <%--<sec:authorize access="hasRole('ROLE_USER')">--%>
-    <li class="navItem"><a href="/orders"><spring:message code="label.order_list"/> </a></li>
-    <li class="navItem"><a href="/product"><spring:message code="label.product_list"/> </a></li>
-    <li class="navItem"><a href="/delivery"><spring:message code="label.delivery_type"/> </a></li>
+    <a href="/orders"><spring:message code="label.order_list"/> </a>
+    <a href="/product"><spring:message code="label.product_list"/> </a>
+    <a href="/delivery"><spring:message code="label.delivery_type"/> </a>
     <%--</sec:authorize>--%>
     <%--<sec:authorize access="hasRole('ROLE_ADMIN')">--%>
-    <li class="navItem"><a href="/opencity"><spring:message code="label.cities"/> </a></li>
-    <li class="navItem"><a href="/region"><spring:message code="label.region"/> </a></li>
-    <li class="navItem"><a href="/modules"><spring:message code="label.modules"/> </a></li>
-    <li class="navItem"><a href="/systemRequirement"><spring:message code="label.system_requirement"/> </a></li>
+   <a href="/opencity"><spring:message code="label.cities"/> </a>
+    <a href="/region"><spring:message code="label.region"/> </a>
+    <a href="/modules"><spring:message code="label.modules"/> </a>
+    <a href="/userList"><spring:message code="label.User_List"/> </a>
+    <a href="/profile"><spring:message code="label.PROFILE"/></a>
+    <a href="/systemRequirement"><spring:message code="label.system_requirement"/></a>
     <%--</sec:authorize>--%>
-        <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button"
                aria-haspopup="true" aria-expanded="false">
                 <spring:message code="label.lang"/> <span class="caret"></span>
                 <ul class="dropdown-menu">
-                    <li><a href="?lang=ua">ua</a></li>
-                    <li><a href="?lang=ru">ru</a></li>
-                    <li><a href="?lang=en">en</a></li>
+                    <li><a href="?lang=ua"><spring:message code="label.ua"/></a></li>
+                    <li><a href="?lang=ru"><spring:message code="label.ru"/></a></li>
+                    <li><a href="?lang=en"><spring:message code="label.en"/></a></li>
                 </ul>
             </a>
-        </li>
 
     <%--<sec:authorize access="isAuthenticated()">--%>
-    <li class="navItem"><form:form action="/logout">
-        <button><spring:message code="label.logout"/></button>
+   <form:form action="/logout">
+        <button style="color: black"><spring:message code="label.logout"/></button>
 
-    </form:form> </li>
+    </form:form>
     <%--</sec:authorize>--%>
-</ul>
+        </nav>
+    </div>
+</div>
 
 

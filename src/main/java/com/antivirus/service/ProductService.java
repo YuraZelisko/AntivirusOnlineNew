@@ -1,6 +1,7 @@
 package com.antivirus.service;
 
 import com.antivirus.entity.Product;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -15,4 +16,7 @@ public interface ProductService {
     Product findOne(int id);
     void delete(int id);
     void update(Product product);
+
+    void save(Product region, MultipartFile image);
+
 }

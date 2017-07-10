@@ -7,12 +7,9 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
-<html>
-<head>
-    <title>delivery</title>
-</head>
-<body>
-<h2 style="text-align: center">Post Service</h2>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<h2 style="text-align: center"><spring:message code="label.Post_Service"/></h2>
 
     <%--<sf:form modelAttribute="region" method="post"  action="/region">--%>
         <%--<sf:input path="name"/>--%>
@@ -20,5 +17,3 @@
 
     <%--</sf:form>--%>
 
-</body>
-</html>

@@ -3,6 +3,7 @@ package com.antivirus.entity;
 import javax.persistence.*;
 import java.sql.Time;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -22,7 +23,7 @@ public class Orders {
     @ManyToMany
     @JoinTable(name = "orders_product", joinColumns = @JoinColumn(name = "orders_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<Product> products;
+    private List<Product> products= new ArrayList();;
 
 
     public Orders() {

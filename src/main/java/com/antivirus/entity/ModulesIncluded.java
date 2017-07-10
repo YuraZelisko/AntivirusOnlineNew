@@ -55,6 +55,7 @@ public class ModulesIncluded {
         this.product = product;
     }
 
+
     @Override
     public String toString() {
         return "ModulesIncluded{" +

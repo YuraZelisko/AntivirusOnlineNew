@@ -9,29 +9,33 @@
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="custom" uri="/WEB-INF/custom.tld" %>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>--%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--%>
 
 
 
 
-<h1 style="color: white">Modules Included</h1>
+<h1><spring:message code="label.Modules_Included"/></h1>
 <div>
     <sf:form modelAttribute="module" method="post" action="/modules">
         <sf:input path="name"/>
-        <button>Save new module</button>
+        <sf:input path="description"/>
+        <button><spring:message code="label.save_new_module"/> </button>
 
 
     </sf:form>
 </div>
-<div style="color: white">
+<div>
 
     <c:forEach var="module" items="${modules.content}">
     <%--<c:forEach var="module" items= "${modules}" >--%>
-        ${module.name}
+        ${module.name}<br>
+        ${module.description}
 
-        <a href="/deleteModule/${module.id}">delete</a><br>
+        <a href="/deleteModule/${module.id}"><spring:message code="label.delete"/> </a>
+        <a href="/updateModule/${module.id}"><spring:message code="label.update"/> </a><br>
     </c:forEach>
 </div>
 <div style="display: flex; justify-content: center;text-align: center">
@@ -40,9 +44,9 @@
         <div class="row">
             <div class="col-md-2 col-xs-6">
                 <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort <span
+                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><spring:message code="label.Sort"/> <span
                             class="caret"></span>
-                    </button>
+
                     <ul class="dropdown-menu">
                         <custom:sort innerHtml="Name asc" paramValue="name"/>
                         <custom:sort innerHtml="Name desc" paramValue="name,desc"/>
@@ -53,7 +57,10 @@
                 <custom:pageable page="${modules}" cell="<li></li>" container="<ul class='pagination'></ul>"/>
             </div>
             <div class="col-md-2 col-xs-6">
-                <custom:size posibleSizes="1,2,5,10" size="${modules.size}"/>
+                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><spring:message code="label.Size"/> <span
+                        class="caret"></span>
+                 <custom:size posibleSizes="1,2,5,10" size="${modules.size}"/>
+                </button>
             </div>
         </div>
     </div>

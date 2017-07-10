@@ -1,6 +1,7 @@
 /**
  * Created by User on 6/21/2017.
  */
+
 $('#saveCity').click(function () {
 
     var city = {

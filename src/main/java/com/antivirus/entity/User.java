@@ -40,12 +40,12 @@ public class User implements UserDetails {
     }
 
     @OneToMany(mappedBy = "user")
-    private List<Orders> orders;
+    private List<Orders> orders = new ArrayList();
 
     @ManyToMany
     @JoinTable(name = "user_product", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<Product> products;
+    private List<Product> products= new ArrayList();
 
     @Enumerated
     private Role role;

@@ -9,9 +9,56 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-    <h1>Antivirus Solutions</h1>
-<input type="radio" name="bitSystem">
+<h1 style="text-align: center"><spring:message code="label.Antivirus_Solutions"/></h1>
+
+</div>
+
+<sf:form modelAttribute="product" method="post" action="/product?${_csrf.parameterName}=${_csrf.token}"
+         enctype="multipart/form-data">
+
+    <input name="image" type="file" class="form-control"/>
+    <input name="name" type="text" placeholder="name">
+    <input name="price" type="number" placeholder="price">
+    <input name="quantityPC" type="number" placeholder="quantityPC">
+    <input name="licenceDurationYears" type="number" placeholder="licenceDurationYears">
+    <%--${modulesIncludeds}--%>
+    <%--modulesIncludeds--%>
+    <%--<sf:select path="modulesIncluded" items="${modulesIncludeds}" itemLabel="name" itemValue="id"/>--%>
+<select multiple>
+<c:forEach var="mi" items="${modulesIncludeds}" >
+    <option value="${mi.id}">${mi.name}</option>
+</c:forEach>
+</select>
+
+
+    <%--<input name="typeOfLicence" type="text" id="licence" placeholder="typeOfLicence">--%>
+
+        <select  name="systemRequirement" type="text"  id="systemRequirement">
+        <c:forEach var="systemRequirement" items="${systemRequirements}">
+            <option value="${systemRequirement.id}">${systemRequirement.OSname}</option>
+        </c:forEach>
+        </select>
+        <button><spring:message code="label.Buy_this"/> </button>
+
+</sf:form>
+
+</div>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <th>name</th>
+        <th>price</th>
+        <th>quantityPC</th>
+        <th>module</th>
+        <th>requirements</th>
+        <th>region</th>
+    </tr>
+    </thead>
+    <tbody id="result">
+    </tbody>
+</table>
 
         <%--<sf:form modelAttribute="product" action="/product?${_csrf.parameterName}=${_csrf.token}"--%>
                  <%--method="post" enctype="multipart/form-data">--%>

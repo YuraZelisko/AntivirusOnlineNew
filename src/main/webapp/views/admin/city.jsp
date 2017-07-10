@@ -1,3 +1,4 @@
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: User
@@ -24,18 +25,18 @@
             <div class="form-group">
 
                 <input type="text" class="form-control" id="cityName"
-                       placeholder="city name"/>
+                       placeholder="<spring:message code="label.city_name"/>">
             </div>
             <div class="form-group">
-                <button class="btn btn-default" id="saveCity">save city</button>
+                <button class="btn btn-default" id="saveCity"><spring:message code="label.save_city"/> </button>
             </div>
         </div>
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>name</th>
-                <th>update</th>
-                <th>delete</th>
+                <th><spring:message code="label.city_name"/> </th>
+                <th><spring:message code="label.update"/> </th>
+                <th><spring:message code="label.delete"/> </th>
             </tr>
             </thead>
             <tbody id="result">

@@ -1,6 +1,7 @@
 package com.antivirus.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,7 +12,7 @@ public class Region {
 
     private String name;
     @OneToMany(mappedBy = "region")
-    private List<DeliveryType> deliveryTypes;
+    private List<DeliveryType> deliveryTypes= new ArrayList();;
 
     private String pathImage;
 

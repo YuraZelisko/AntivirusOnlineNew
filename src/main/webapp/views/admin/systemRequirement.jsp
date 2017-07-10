@@ -9,26 +9,51 @@
 <%@taglib prefix="sf" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<h1 style="color: #8317AD">System requirements</h1>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
+<h1><spring:message code="label.system_requirement"/></h1>
+
 <sf:form modelAttribute="systemRequirement" method="post" action="/systemRequirement">
     <sf:input path="OSname"/>
     <sf:input path="bitSystem"/>
     <sf:input path="spaceAmount"/>
     <sf:input path="RAM"/>
     <sf:input path="OSlanguage"/>
-    <button>Save Requirements</button>
+    <button><spring:message code="label.save_requirements"/></button>
 
 </sf:form>
+<table class="table table-hover">
+<thead>
+<tr>
+    <th>OS name </th>
+    <th>Bit of system</th>
+    <th>spaceAmount</th>
+    <th>RAM</th>
+    <th>OS language</th>
+    <th><spring:message code="label.delete"/></th>
+</tr>
+</thead>
+    <tbody>
+    <tr>
 
-<%--<div style="color: white">--%>
+        <c:forEach var="systemRequirement" items="${systemRequirements}">
+            <td>${systemRequirement.OSname}</td>
 
-    <%--<c:forEach var="systemRequirement" items="${systemRequirements.content}">--%>
-        <%--&lt;%&ndash;<c:forEach var="module" items= "${modules}" >&ndash;%&gt;--%>
-        <%--${systemRequirement.name}--%>
+            <td>${systemRequirement.bitSystem}</td>
 
-        <%--<a href="/deleteModule/${systemRequirement.id}">delete</a><br>--%>
-    <%--</c:forEach>--%>
-<%--</div>--%>
+            <td> ${systemRequirement.spaceAmount}</td>
+
+            <td> ${systemRequirement.RAM}</td>
+
+            <td>${systemRequirement.OSlanguage}</td>
+            <td><a href="/deleteSystemRequirement/${systemRequirement.id}"><spring:message code="label.delete"/> </a></td>
+            <td> <a href="/updateSystemRequirement/${systemRequirement.id}"><spring:message code="label.update"/> </a></td>
+            <br></tr>
+    </c:forEach>
+</tbody>
+</table>
+
+
 <%--<div style="display: flex; justify-content: center;text-align: center">--%>
 
     <%--<div class="col-md-12 col-xs-12">--%>

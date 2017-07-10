@@ -31,7 +31,7 @@ public class ModuleController {
     }
 
     @PostMapping("/modules")
-    public String modules(@ModelAttribute ("module") ModulesIncluded modulesIncluded){
+    public String saveModules(@ModelAttribute ("module") ModulesIncluded modulesIncluded){
         modulesIncludedService.save(modulesIncluded);
         return "redirect:/modules";
     }
@@ -40,15 +40,18 @@ public class ModuleController {
        modulesIncludedService.delete(id);
         return "redirect:/modules";
     }
-    @GetMapping("/updateIngredient/{id}")
-    public String updateIngredient(@PathVariable int id, Model model){
 
-        ModulesIncluded modulesIncluded =
-                modulesIncludedService.findOne(id);
+    @GetMapping("/updateModule/{id}")
+    public String getAuthor(@PathVariable int id, Model model) {
+        model.addAttribute("module", modulesIncludedService.findOne(id));
+        return "views-admin-updateModule";
+    }
 
-        model.addAttribute("ingredient", modulesIncluded);
-
-        return "updateIngredient";
-
+    @PostMapping("/updateModule/{id}")
+    public String updateAuthor(@ModelAttribute("module") ModulesIncluded modulesIncluded, @PathVariable int id, Model model) {
+        modulesIncluded.setId(id);
+        modulesIncludedService.update(modulesIncluded);
+        model.addAttribute("module", modulesIncludedService.findAll());
+        return "redirect:/modules";
     }
 }
