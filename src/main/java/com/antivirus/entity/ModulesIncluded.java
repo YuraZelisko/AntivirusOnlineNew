@@ -1,6 +1,8 @@
 package com.antivirus.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class ModulesIncluded {
@@ -12,8 +14,11 @@ public class ModulesIncluded {
     private String name;
     private String description;
 
-    @ManyToOne
-    private Product product;
+    @ManyToMany
+    @JoinTable(name = "modules_product", joinColumns = @JoinColumn(name = "modules_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id"))
+
+    private List<Product> products= new ArrayList();
 
     public ModulesIncluded() {
     }
@@ -47,14 +52,13 @@ public class ModulesIncluded {
         this.description = description;
     }
 
-    public Product getProduct() {
-        return product;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
-
 
     @Override
     public String toString() {
@@ -62,7 +66,7 @@ public class ModulesIncluded {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", product=" + product +
+                ", products=" + products +
                 '}';
     }
 }

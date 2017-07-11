@@ -41,13 +41,13 @@ public class SystemRequirementController {
     }
 
     @GetMapping("/updateSystemRequirement/{id}")
-    public String getAuthor(@PathVariable int id, Model model) {
+    public String getSystem(@PathVariable int id, Model model) {
         model.addAttribute("systemRequirement", systemRequirementService.findOne(id));
         return "views-admin-updateSystemRequirement";
     }
 
     @PostMapping("/updateSystemRequirement/{id}")
-    public String updateAuthor(@ModelAttribute("systemRequirement") SystemRequirements systemRequirements, @PathVariable int id, Model model) {
+    public String updateSystem(@ModelAttribute("systemRequirement") SystemRequirements systemRequirements, @PathVariable int id, Model model) {
         systemRequirements.setId(id);
         systemRequirementService.update(systemRequirements);
         model.addAttribute("systemRequirement", systemRequirementService.findAll());

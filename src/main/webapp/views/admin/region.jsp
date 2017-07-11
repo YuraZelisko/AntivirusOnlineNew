@@ -23,15 +23,37 @@
 </div>
 <div style="color: navy">
 
-    <c:forEach var="region" items="${regions}">
-        ${region.name}
-        <div>
-        <img src="${region.pathImage}" alt="" width="20%" height="20%">
-        </div>
-        <a href="/deleteRegion/${region.id}"><spring:message code="label.delete"/> </a><br>
-    </c:forEach>
+    <%--<c:forEach var="region" items="${regions}">--%>
+        <%--${region.name}--%>
+        <%--<div>--%>
+        <%--<img src="${region.pathImage}" alt="" width="20%" height="20%">--%>
+        <%--</div>--%>
+        <%--<a href="/deleteRegion/${region.id}"><spring:message code="label.delete"/> </a><br>--%>
+    <%--</c:forEach>--%>
 
 
+    <table class="table table-hover">
+        <thead>
+        <tr>
 
+            <th>Region</th>
+            <th>Image</th>
+            <th><spring:message code="label.delete"/></th>
+            <th><spring:message code="label.update"/></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+
+            <c:forEach var="region" items="${regions}">
+
+            <td> ${region.name}</td>
+            <td><img src="${region.pathImage}" alt="" width="130px" height="100px"></td>
+            <td><a href="/deleteRegion/${region.id}"><spring:message code="label.delete"/> </a></td>
+            <td> <a href="/updateRegion/${region.id}"><spring:message code="label.update"/> </a></td>
+            <br></tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </div>
 

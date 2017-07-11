@@ -1,8 +1,10 @@
 package com.antivirus.service;
 
 import com.antivirus.entity.Product;
+import com.antivirus.entity.SystemRequirements;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,13 +12,13 @@ import java.util.List;
  */
 public interface ProductService {
 
-    void save(Product product
-    );
+    void save(Product product);
+
     List<Product> findAll();
     Product findOne(int id);
     void delete(int id);
     void update(Product product);
 
-    void save(Product region, MultipartFile image);
+    void save(Product region, ArrayList<Integer> ids, SystemRequirements systemRequirements, MultipartFile image);
 
 }

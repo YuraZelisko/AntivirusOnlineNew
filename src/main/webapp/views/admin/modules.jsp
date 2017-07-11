@@ -29,14 +29,29 @@
 </div>
 <div>
 
-    <c:forEach var="module" items="${modules.content}">
-    <%--<c:forEach var="module" items= "${modules}" >--%>
-        ${module.name}<br>
-        ${module.description}
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Module name</th>
+            <th>Description</th>
 
-        <a href="/deleteModule/${module.id}"><spring:message code="label.delete"/> </a>
-        <a href="/updateModule/${module.id}"><spring:message code="label.update"/> </a><br>
-    </c:forEach>
+            <th><spring:message code="label.delete"/></th>
+            <th><spring:message code="label.update"/></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+
+            <c:forEach var="module" items="${modules.content}">
+
+            <td> ${module.name}</td>
+            <td> ${module.description}</td>
+            <td><a href="/deleteModule/${module.id}"><spring:message code="label.delete"/></a></td>
+            <td><a href="/updateModule/${module.id}"><spring:message code="label.update"/></a></td>
+            <br></tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </div>
 <div style="display: flex; justify-content: center;text-align: center">
 

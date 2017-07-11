@@ -18,22 +18,45 @@ public class RegionController {
     private RegionService regionService;
 
     @GetMapping("/region")
-    public String region(Model model){
-        model.addAttribute("regions",regionService.findAll());
+    public String region(Model model) {
+        model.addAttribute("regions", regionService.findAll());
         model.addAttribute("region", new Region());
         return "views-admin-region";
     }
 
     @PostMapping("/region")
-    public String region(@ModelAttribute ("region") Region region, @RequestParam("image")MultipartFile image){
+    public String region(@ModelAttribute("region") Region region,
+                         @RequestParam("image") MultipartFile image) {
         regionService.save(region, image);
         return "redirect:/region";
     }
 
-   @GetMapping("/deleteRegion/{id}")
-    public String delete (@PathVariable int id){
+    @GetMapping("/deleteRegion/{id}")
+    public String delete(@PathVariable int id) {
         regionService.delete(id);
         return "redirect:/region";
-   }
+    }
+
+    @GetMapping("/updateRegion/{id}")
+    public String getAuthor(@PathVariable int id, Model model) {
+        model.addAttribute("region", regionService.findOne(id));
+        return "views-admin-updateRegion";
+    }
+
+    @PostMapping("/updateRegion/{id}")
+    public String updateProduct(@ModelAttribute ("region") Region region,
+                                @RequestAttribute("image") MultipartFile image,
+                                @PathVariable int id,
+                                Model model) {
+        region.setId(id);
+
+        if (image.isEmpty()) {
+            regionService.update(region);
+        } else {
+            regionService.save(region, image);
+            model.addAttribute("region", regionService.findOne(id));
+        }
+        return "redirect:/region";
+    }
 }
 

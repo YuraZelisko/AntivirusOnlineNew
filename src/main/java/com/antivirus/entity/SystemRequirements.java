@@ -1,6 +1,7 @@
 package com.antivirus.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class SystemRequirements {
@@ -15,19 +16,18 @@ public class SystemRequirements {
     private String OSlanguage;
     private int RAM;
 
-    @ManyToOne
-    private Product product;
+    @OneToMany (mappedBy = "systemRequirements")
+    private List<Product> products;
 
     public SystemRequirements() {
     }
 
-    public SystemRequirements(String OSname, boolean bitSystem, int spaceAmount, String OSlanguage, int RAM, Product product) {
+    public SystemRequirements(String OSname, boolean bitSystem, int spaceAmount, String OSlanguage, int RAM) {
         this.OSname = OSname;
         this.bitSystem = bitSystem;
         this.spaceAmount = spaceAmount;
         this.OSlanguage = OSlanguage;
         this.RAM = RAM;
-        this.product = product;
     }
 
     public int getId() {
@@ -78,12 +78,12 @@ public class SystemRequirements {
         this.RAM = RAM;
     }
 
-    public Product getProduct() {
-        return product;
+    public List<Product> getProducts() {
+        return products;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProducts(List<Product> products) {
+        this.products = products;
     }
 
     @Override
@@ -95,7 +95,7 @@ public class SystemRequirements {
                 ", spaceAmount=" + spaceAmount +
                 ", OSlanguage='" + OSlanguage + '\'' +
                 ", RAM=" + RAM +
-                ", product=" + product +
+                ", product=" + products +
                 '}';
     }
 }

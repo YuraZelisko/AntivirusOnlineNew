@@ -1,14 +1,20 @@
 package com.antivirus.serviceImpl;
 
+import com.antivirus.dao.ModulesIncludedDao;
 import com.antivirus.dao.ProductDao;
+import com.antivirus.dao.SystemRequirementsDao;
+import com.antivirus.entity.ModulesIncluded;
 import com.antivirus.entity.Product;
+import com.antivirus.entity.SystemRequirements;
 import com.antivirus.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,8 +25,45 @@ public class ProductServiceImpl implements ProductService{
     @Autowired
     private ProductDao productDao;
 
+    @Autowired
+    private ModulesIncludedDao modulesIncludedDao;
+    @Autowired
+    private SystemRequirementsDao systemRequirementsDao;
+
     @Override
     public void save(Product product) {
+        productDao.save(product);
+    }
+
+    public void save(Product product, ArrayList<Integer> ids, SystemRequirements sr, MultipartFile image) {
+
+        productDao.saveAndFlush(product);
+
+        String path = System.getProperty("catalina.home") + "/resources/"
+                + product.getName() + "/" + image.getOriginalFilename();
+
+        product.setPathImage("resources/" + product.getName() + "/" + image.getOriginalFilename());
+
+        File filePath = new File(path);
+
+        try {
+            filePath.mkdirs();
+            image.transferTo(filePath);
+        } catch (IOException e) {
+            System.out.println("error with file");
+        }
+
+        for (Integer id : ids) {
+            ModulesIncluded modulesIncluded = modulesIncludedDao.modulesIncludedWithProducts(id);
+            modulesIncluded.getProducts().add(product);
+            modulesIncludedDao.save(modulesIncluded);
+        }
+
+//        sr = systemRequirementsDao.systemRequirementsWithProducts();
+        sr.getProducts().add(product);
+        systemRequirementsDao.save(sr);
+
+
         productDao.save(product);
     }
 
@@ -44,38 +87,24 @@ public class ProductServiceImpl implements ProductService{
         productDao.save(product);
     }
 
-    @Override
-    public void save(Product product, MultipartFile image) {
-        productDao.saveAndFlush(product);
-        String path = System.getProperty("catalina.home") + "/resources/"
-                + product.getName() + "/" + image.getOriginalFilename();
-        product.setPathImage("resources/" + product.getName() + "/" + image.getOriginalFilename());
-        File filePath = new File(path);
-
-        try {
-            filePath.mkdirs();
-            image.transferTo(filePath);
-        } catch (IOException e) {
-            System.out.println("error with file");
-        }
-
-        productDao.save(product);
 
 
-    }
-
-
-
-//    public void save(Region region, MultipartFile image){
-//
-//        regionDao.saveAndFlush(region);
-//
+//    @Override
+//    public void save(Product product,  MultipartFile image) {
+//        productDao.saveAndFlush(product);
 //        String path = System.getProperty("catalina.home") + "/resources/"
-//                + region.getName() + "/" + image.getOriginalFilename();
+//                + product.getName() + "/" + image.getOriginalFilename();
+//        product.setPathImage("resources/" + product.getName() + "/" + image.getOriginalFilename());
+//        File filePath = new File(path);
 //
-//        region.setPathImage("resources/" + region.getName() + "/" + image.getOriginalFilename());
+//        try {
+//            filePath.mkdirs();
+//            image.transferTo(filePath);
+//        } catch (IOException e) {
+//            System.out.println("error with file");
+//        }
 //
-
+//        productDao.save(product);
 //    }
 }
 

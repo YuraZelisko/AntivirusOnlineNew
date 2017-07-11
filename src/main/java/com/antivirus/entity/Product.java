@@ -34,11 +34,15 @@ public class Product {
             inverseJoinColumns = @JoinColumn(name = "product_id"))
     private List<User> users= new ArrayList();
 
-    @OneToMany (mappedBy = "product")
+    @ManyToMany
+    @JoinTable(name = "modules_product", joinColumns = @JoinColumn(name = "modules_id"),
+            inverseJoinColumns = @JoinColumn(name = "product_id"))
+
     private List<ModulesIncluded> modulesIncludeds= new ArrayList();
 
-    @OneToMany (mappedBy = "product")
-    private List<SystemRequirements> systemRequirements= new ArrayList();
+
+    @ManyToOne
+    private SystemRequirements systemRequirements;
 
     private String pathImage;
 
@@ -52,7 +56,8 @@ public class Product {
         this.price = price;
         this.quantityPC = quantityPC;
         this.licenceDurationYears= licenceDurationYears;
-    }
+        }
+
 
     public int getId() {
         return id;
@@ -142,11 +147,11 @@ public class Product {
         this.pathImage = pathImage;
     }
 
-    public List<SystemRequirements> getSystemRequirements() {
+    public SystemRequirements getSystemRequirements() {
         return systemRequirements;
     }
 
-    public void setSystemRequirements(List<SystemRequirements> systemRequirements) {
+    public void setSystemRequirements(SystemRequirements systemRequirements) {
         this.systemRequirements = systemRequirements;
     }
 

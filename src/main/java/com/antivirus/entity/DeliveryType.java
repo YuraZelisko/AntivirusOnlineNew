@@ -12,7 +12,7 @@ public class DeliveryType {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private LocalDateTime localDateTime;
+    private int daysToArrive;
     private double cost;
     private String deliveryServiceName;
 
@@ -20,15 +20,15 @@ public class DeliveryType {
     private  Region region;
 
     @ManyToMany
-    @JoinTable(name = "delivery_product", joinColumns = @JoinColumn(name = "delivery_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<Product> products= new ArrayList();;
+    @JoinTable(name = "delivery_orders", joinColumns = @JoinColumn(name = "delivery_id"),
+            inverseJoinColumns = @JoinColumn(name = "orders_id"))
+    private List<Orders> orders= new ArrayList();;
 
     public DeliveryType() {
     }
 
-    public DeliveryType(LocalDateTime localDateTime, double cost, String deliveryServiceName) {
-        this.localDateTime = localDateTime;
+    public DeliveryType(int daysToArrive, double cost, String deliveryServiceName) {
+        this.daysToArrive = daysToArrive;
         this.cost = cost;
         this.deliveryServiceName = deliveryServiceName;
     }
@@ -39,14 +39,6 @@ public class DeliveryType {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
-    }
-
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
     }
 
     public double getCost() {
@@ -65,6 +57,14 @@ public class DeliveryType {
         this.deliveryServiceName = deliveryServiceName;
     }
 
+    public int getDaysToArrive() {
+        return daysToArrive;
+    }
+
+    public void setDaysToArrive(int daysToArrive) {
+        this.daysToArrive = daysToArrive;
+    }
+
     public Region getRegion() {
         return region;
     }
@@ -73,23 +73,23 @@ public class DeliveryType {
         this.region = region;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public List<Orders> getOrders() {
+        return orders;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setOrders(List<Orders> orders) {
+        this.orders = orders;
     }
 
     @Override
     public String toString() {
         return "DeliveryType{" +
                 "id=" + id +
-                ", localDateTime=" + localDateTime +
+                ", daysToArrive=" + daysToArrive +
                 ", cost=" + cost +
                 ", deliveryServiceName='" + deliveryServiceName + '\'' +
                 ", region=" + region +
-                ", products=" + products +
+                ", orders=" + orders +
                 '}';
     }
 }

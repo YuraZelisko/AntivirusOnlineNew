@@ -42,6 +42,7 @@ public class RegionServiceImpl implements RegionService{
         regionDao.save(region);
     }
 
+
     @Override
     public List<Region> findAll() {
         return regionDao.findAll();
@@ -61,4 +62,20 @@ public class RegionServiceImpl implements RegionService{
     public void update(Region region) {
         regionDao.save(region);
     }
+//    @Override
+//    public void update(Region region, MultipartFile image) {
+//        regionDao.saveAndFlush(region);
+//        String path = System.getProperty("catalina.home") + "/resources/"
+//                + region.getName() + "/" + image.getOriginalFilename();
+//        region.setPathImage("resources/" + region.getName() + "/" + image.getOriginalFilename());
+//        File filePath = new File(path);
+//
+//        try {
+//            filePath.mkdirs();
+//            image.transferTo(filePath);
+//        } catch (IOException e) {
+//            System.out.println("error with file");
+//        }
+//        regionDao.save(region);
+//    }
 }
