@@ -15,7 +15,13 @@
 
 <sf:form modelAttribute="systemRequirement" method="post" action="/systemRequirement">
     <sf:input path="OSname"/>
-    <sf:input path="bitSystem"/>
+    <%--<sf:input path="bitSystem"/>--%>
+
+    <label for="bit32">x32</label>
+    <input type="radio" name="bitSystem" id="bit32" value="false" />
+    <label for="bit64">x64</label>
+    <input type="radio" name="bitSystem" id="bit64" value="true" />
+
     <sf:input path="spaceAmount"/>
     <sf:input path="RAM"/>
     <sf:input path="OSlanguage"/>
