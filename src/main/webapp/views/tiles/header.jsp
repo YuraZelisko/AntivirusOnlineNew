@@ -13,44 +13,43 @@
 <div class="fixed-header">
     <div class="container">
         <nav>
-    <%--<div>--%>
-    <%--<sec:authentication property="name"/>--%>
-    <%--</div>--%>
-    <%--<sec:authorize access="!isAuthenticated()">--%>
-
-    <a href="/"><spring:message code="label.home"/> </a>
-
+    <div>
+    <sec:authentication property="name"/>
+    </div>
+    <sec:authorize access="!isAuthenticated()">
     <a href="/registration"><spring:message code="label.registration"/></a>
-    <%--</sec:authorize>--%>
-    <%--<sec:authorize access="hasRole('ROLE_USER')">--%>
+    </sec:authorize>
+    <sec:authorize access="hasRole('ROLE_USER')">
+    <a href="/"><spring:message code="label.home"/> </a>
     <a href="/orders"><spring:message code="label.order_list"/> </a>
     <a href="/product"><spring:message code="label.product_list"/> </a>
     <a href="/delivery"><spring:message code="label.delivery_type"/> </a>
-    <%--</sec:authorize>--%>
-    <%--<sec:authorize access="hasRole('ROLE_ADMIN')">--%>
+        <a href="/profile"><spring:message code="label.PROFILE"/></a>
+    </sec:authorize>
+    <sec:authorize access="hasRole('ROLE_ADMIN')">
    <a href="/opencity"><spring:message code="label.cities"/> </a>
     <a href="/region"><spring:message code="label.region"/> </a>
     <a href="/modules"><spring:message code="label.modules"/> </a>
     <a href="/userList"><spring:message code="label.User_List"/> </a>
-    <a href="/profile"><spring:message code="label.PROFILE"/></a>
     <a href="/systemRequirement"><spring:message code="label.system_requirement"/></a>
-    <%--</sec:authorize>--%>
+    </sec:authorize>
+            <div class="dropdown" style="float: right">
             <a class="dropdown-toggle" data-toggle="dropdown" role="button"
                aria-haspopup="true" aria-expanded="false">
-                <spring:message code="label.lang"/> <span class="caret"></span>
-                <ul class="dropdown-menu">
+                <spring:message code="label.lang"/> <span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu" style="margin: 1%; padding: 0%">
                     <li><a href="?lang=ua"><spring:message code="label.ua"/></a></li>
                     <li><a href="?lang=ru"><spring:message code="label.ru"/></a></li>
                     <li><a href="?lang=en"><spring:message code="label.en"/></a></li>
                 </ul>
-            </a>
+            </div>
 
-    <%--<sec:authorize access="isAuthenticated()">--%>
+    <sec:authorize access="isAuthenticated()">
    <form:form action="/logout">
         <button style="color: black"><spring:message code="label.logout"/></button>
 
     </form:form>
-    <%--</sec:authorize>--%>
+    </sec:authorize>
         </nav>
     </div>
 </div>

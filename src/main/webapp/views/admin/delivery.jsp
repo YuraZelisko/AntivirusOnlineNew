@@ -12,11 +12,11 @@
 
 <h1 style="text-align: center"><spring:message code="label.Post_Service"/></h1>
 
-<sf:form modelAttribute="delivery" method="post" action="/delivery">
-    <sf:input path="deliveryServiceName"/>
-    <sf:input path="cost"/>
-    <sf:input path="daysToArrive"/>
-
+<sf:form modelAttribute="delivery" method="post" action="/delivery?${_csrf.parameterName}=${_csrf.token}">
+    <sf:input path="deliveryServiceName" placeholder="Delivery Name"/>
+    <sf:input path="cost" placeholder="cost"/>
+    <sf:input path="daysToArrive" placeholder="daysToArrive"/>
+    <sf:label path="region">Regions:</sf:label>
     <sf:select path="region" items="${regions}" itemLabel="name" itemValue="id"/>
 
 
@@ -47,7 +47,7 @@
         <td>${delivery.deliveryServiceName}</td>
         <td>${delivery.cost}</td>
         <td> ${delivery.daysToArrive}</td>
-        <td> ${region.name}</td>
+        <td> ${delivery.region.name}</td>
         <td><a href="/deleteDelivery/${delivery.id}"><spring:message code="label.delete"/> </a></td>
         <td> <a href="/updateDelivery/${delivery.id}"><spring:message code="label.update"/> </a></td>
         <br></tr>

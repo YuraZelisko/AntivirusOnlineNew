@@ -14,7 +14,7 @@
 <h1><spring:message code="label.system_requirement"/></h1>
 
 <sf:form modelAttribute="systemRequirement" method="post" action="/systemRequirement">
-    <sf:input path="OSname"/>
+    <sf:input path="OSname" placeholder="OS name"/>
     <%--<sf:input path="bitSystem"/>--%>
 
     <label for="bit32">x32</label>
@@ -22,9 +22,9 @@
     <label for="bit64">x64</label>
     <input type="radio" name="bitSystem" id="bit64" value="true" />
 
-    <sf:input path="spaceAmount"/>
-    <sf:input path="RAM"/>
-    <sf:input path="OSlanguage"/>
+    <sf:input path="spaceAmount" placeholder="Space Amount"/>
+    <sf:input path="RAM" placeholder="RAM"/>
+    <sf:input path="OSlanguage" placeholder="OS language"/>
     <button><spring:message code="label.save_requirements"/></button>
 
 </sf:form>
@@ -36,6 +36,7 @@
     <th>spaceAmount</th>
     <th>RAM</th>
     <th>OS language</th>
+    <th><spring:message code="label.delete"/></th>
     <th><spring:message code="label.delete"/></th>
 </tr>
 </thead>

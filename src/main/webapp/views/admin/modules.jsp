@@ -20,8 +20,8 @@
 <h1><spring:message code="label.Modules_Included"/></h1>
 <div>
     <sf:form modelAttribute="module" method="post" action="/modules">
-        <sf:input path="name"/>
-        <sf:input path="description"/>
+        <sf:input path="name" placeholder="Name"/>
+        <sf:input path="description" placeholder="Description"/>
         <button><spring:message code="label.save_new_module"/> </button>
 
 

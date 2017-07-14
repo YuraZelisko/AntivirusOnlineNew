@@ -14,4 +14,5 @@ public interface SystemRequirementService {
     SystemRequirements findOne(int id);
     void delete(int id);
     void update(SystemRequirements systemRequirements);
+    SystemRequirements systemRequirementsWithProducts(int id);
 }

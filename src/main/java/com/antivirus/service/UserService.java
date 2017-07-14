@@ -25,7 +25,7 @@ public interface UserService {
 
     User findUserWithOrders(int id);
 
-    User findUserWithProducts(@Param("id") int id);
+    User findUserWithProducts(int id);
 
     void update(User user, String newPassword);
 }

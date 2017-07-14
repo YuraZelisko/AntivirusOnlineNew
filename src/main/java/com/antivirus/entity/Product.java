@@ -20,23 +20,23 @@ public class Product {
 
 
     @ManyToMany
-    @JoinTable(name = "orders_product", joinColumns = @JoinColumn(name = "orders_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
+    @JoinTable(name = "orders_product", joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "orders_id"))
     private List<Orders> orders= new ArrayList();
 
     @ManyToMany
-    @JoinTable(name = "delivery_product", joinColumns = @JoinColumn(name = "delivery_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
+    @JoinTable(name = "delivery_product", joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "delivery_id"))
     private List<DeliveryType> deliveryTypes= new ArrayList();
 
     @ManyToMany
-    @JoinTable(name = "user_product", joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
+    @JoinTable(name = "user_product", joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id"))
     private List<User> users= new ArrayList();
 
     @ManyToMany
-    @JoinTable(name = "modules_product", joinColumns = @JoinColumn(name = "modules_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
+    @JoinTable(name = "modules_product", joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "modules_id"))
 
     private List<ModulesIncluded> modulesIncludeds= new ArrayList();
 
@@ -58,6 +58,18 @@ public class Product {
         this.licenceDurationYears= licenceDurationYears;
         }
 
+    public Product(String name, String description, double price, int quantityPC,
+                   int licenceDurationYears, List<ModulesIncluded> modulesIncludeds,
+                   SystemRequirements systemRequirements, String pathImage) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.quantityPC = quantityPC;
+        this.licenceDurationYears = licenceDurationYears;
+        this.modulesIncludeds = modulesIncludeds;
+        this.systemRequirements = systemRequirements;
+        this.pathImage = pathImage;
+    }
 
     public int getId() {
         return id;
@@ -154,6 +166,8 @@ public class Product {
     public void setSystemRequirements(SystemRequirements systemRequirements) {
         this.systemRequirements = systemRequirements;
     }
+
+
 
     @Override
     public String toString() {

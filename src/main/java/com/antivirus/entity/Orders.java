@@ -23,7 +23,15 @@ public class Orders {
     @ManyToMany
     @JoinTable(name = "orders_product", joinColumns = @JoinColumn(name = "orders_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private List<Product> products= new ArrayList();;
+    private List<Product> products= new ArrayList<>();
+
+    @ManyToOne
+    private  Region region;
+
+    @ManyToMany
+    @JoinTable(name = "delivery_orders", joinColumns = @JoinColumn(name = "orders_id"),
+            inverseJoinColumns = @JoinColumn(name = "delivery_id"))
+    private List<DeliveryType> orders= new ArrayList<>();
 
 
     public Orders() {

@@ -1,20 +1,21 @@
 package com.antivirus.controller;
 
+import com.antivirus.Editor.RegionEditor;
 import com.antivirus.entity.DeliveryType;
 import com.antivirus.entity.Region;
 import com.antivirus.service.DeliveryTypeService;
 import com.antivirus.service.RegionService;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-/**
- * Created by User on 5/28/2017.
- */
 @Controller
 public class DeliveryController {
 
@@ -22,6 +23,11 @@ public class DeliveryController {
     private DeliveryTypeService deliveryTypeService;
     @Autowired
     private RegionService regionService;
+
+    @InitBinder
+    public void init(WebDataBinder binder){
+        binder.registerCustomEditor(Region.class, new RegionEditor());
+    }
 
 
     @GetMapping("/delivery")
@@ -46,16 +52,18 @@ public class DeliveryController {
     }
 
     @GetMapping("/updateDelivery/{id}")
-    public String getAuthor(@PathVariable int id, Model model) {
+    public String getDelivery(@PathVariable int id, Model model) {
         model.addAttribute("delivery", deliveryTypeService.findOne(id));
+        model.addAttribute("regions", regionService.findAll());
         return "views-admin-updateDelivery";
     }
 
     @PostMapping("/updateDelivery/{id}")
-    public String updateAuthor(@ModelAttribute("delivery")
-                               DeliveryType deliveryType,
+    public String updateDelivery(@ModelAttribute("delivery")
+                               DeliveryType deliveryType,@RequestParam int regionId,
                                @PathVariable int id, Model model) {
         deliveryType.setId(id);
+        deliveryType.setRegion(regionService.findOne(regionId));
         deliveryTypeService.update(deliveryType);
         model.addAttribute("delivery", deliveryTypeService.findAll());
         return "redirect:/delivery";

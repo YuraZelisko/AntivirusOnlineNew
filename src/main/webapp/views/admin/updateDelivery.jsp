@@ -20,10 +20,18 @@
             <td><form:input path="cost"/></td>
         </tr>
         <tr>
-            <td><form:label path="daysToArrive">Days to arrive</form:label></td>
+            <td><form:label path="daysToArrive">Price</form:label></td>
             <td><form:input path="daysToArrive"/></td>
         </tr>
-
-    </table>
+        <tr>
+            <td>
+           <select name="regionId">
+                <c:forEach var="reg" items="${regions}">
+                    <option value="${reg.id}">${reg.name}</option>
+                </c:forEach>
+            </select>
+            </td>
+        </tr>
+     </table>
     <input type="submit" value="Save" />
 </form:form>

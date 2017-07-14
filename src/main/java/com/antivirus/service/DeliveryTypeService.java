@@ -14,4 +14,5 @@ public interface DeliveryTypeService {
     DeliveryType findOne(int id);
     void delete(int id);
     void update(DeliveryType deliveryType);
+    List<DeliveryType> deliveryWithRegion();
 }

@@ -42,4 +42,9 @@ public class SystemReqirementServiceImpl implements SystemRequirementService{
     public void update(SystemRequirements systemRequirements) {
         systemRequirementsDao.save(systemRequirements);
     }
+
+    @Override
+    public SystemRequirements systemRequirementsWithProducts(int id) {
+        return systemRequirementsDao.systemRequirementsWithProducts(id);
+    }
 }

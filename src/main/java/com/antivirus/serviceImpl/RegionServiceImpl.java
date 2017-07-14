@@ -1,6 +1,7 @@
 package com.antivirus.serviceImpl;
 
 import com.antivirus.dao.RegionDao;
+import com.antivirus.entity.DeliveryType;
 import com.antivirus.entity.Region;
 import com.antivirus.service.RegionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,6 +62,12 @@ public class RegionServiceImpl implements RegionService{
     @Override
     public void update(Region region) {
         regionDao.save(region);
+    }
+
+
+    @Override
+    public  List<Region> regionWithDeliveries() {
+        return regionDao.regionWithDeliveries();
     }
 //    @Override
 //    public void update(Region region, MultipartFile image) {

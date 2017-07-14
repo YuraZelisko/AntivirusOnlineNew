@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductService{
         productDao.save(product);
     }
 
-    public void save(Product product, ArrayList<Integer> ids, SystemRequirements sr, MultipartFile image) {
+    public void save(Product product, ArrayList<Integer> ids, MultipartFile image) {
 
         productDao.saveAndFlush(product);
 
@@ -60,11 +60,51 @@ public class ProductServiceImpl implements ProductService{
         }
 
 //        sr = systemRequirementsDao.systemRequirementsWithProducts();
-        sr.getProducts().add(product);
-        systemRequirementsDao.save(sr);
+//        SystemRequirements systemRequirements = systemRequirementsDao.systemRequirementsWithProducts(index);
+//        systemRequirements.getProducts().add(product);
+//        systemRequirementsDao.save(systemRequirements);
 
 
         productDao.save(product);
+    }
+
+//    public void save(Product product, ArrayList<Integer> ids, SystemRequirements sr, MultipartFile image) {
+//        System.out.println("ПОМИЛКА"+sr.getOSname());
+//        productDao.saveAndFlush(product);
+//        String path = System.getProperty("catalina.home") + "/resources/"
+//                + product.getName() + "/" + image.getOriginalFilename();
+//
+//        product.setPathImage("resources/" + product.getName() + "/" + image.getOriginalFilename());
+//
+//            System.out.println("продукт"+product.getId());
+//
+//        File filePath = new File(path);
+//
+//        try {
+//            filePath.mkdirs();
+//            image.transferTo(filePath);
+//        } catch (IOException e) {
+//            System.out.println("error with file");
+//        }
+//
+//
+//        for (Integer d : ids) {
+//            ModulesIncluded modulesIncluded = modulesIncludedDao.modulesIncludedWithProducts(d);
+//            product.getModulesIncludeds().add(modulesIncluded);
+//            modulesIncluded.getProducts().add(product);
+//            modulesIncludedDao.save(modulesIncluded);
+//        }
+//
+//        sr.getProducts().add(product);
+//        systemRequirementsDao.save(sr);
+//
+//        productDao.save(product);
+//
+//    }
+
+    @Override
+    public List<Product> productIncludedWithModules() {
+        return productDao.productIncludedWithModules();
     }
 
     @Override

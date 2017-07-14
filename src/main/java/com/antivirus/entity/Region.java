@@ -2,7 +2,9 @@ package com.antivirus.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Region {
@@ -11,14 +13,20 @@ public class Region {
     private int id;
 
     private String name;
+
     @OneToMany(mappedBy = "region")
-    private List<DeliveryType> deliveryTypes= new ArrayList();;
+    private Set<DeliveryType> deliveryTypes= new HashSet<>();;
 
     private String pathImage;
 
 
 
     public Region() {
+    }
+
+    public Region(String name, String pathImage) {
+        this.name = name;
+        this.pathImage = pathImage;
     }
 
     public String getPathImage() {
@@ -49,11 +57,11 @@ public class Region {
         this.name = name;
     }
 
-    public List<DeliveryType> getDeliveryTypes() {
+    public Set<DeliveryType> getDeliveryTypes() {
         return deliveryTypes;
     }
 
-    public void setDeliveryTypes(List<DeliveryType> deliveryTypes) {
+    public void setDeliveryTypes(Set<DeliveryType> deliveryTypes) {
         this.deliveryTypes = deliveryTypes;
     }
 

@@ -22,15 +22,16 @@ public class DeliveryType {
     @ManyToMany
     @JoinTable(name = "delivery_orders", joinColumns = @JoinColumn(name = "delivery_id"),
             inverseJoinColumns = @JoinColumn(name = "orders_id"))
-    private List<Orders> orders= new ArrayList();;
+    private List<Orders> orders= new ArrayList<>();
 
     public DeliveryType() {
     }
 
-    public DeliveryType(int daysToArrive, double cost, String deliveryServiceName) {
+    public DeliveryType(int daysToArrive, double cost, String deliveryServiceName, Region region) {
         this.daysToArrive = daysToArrive;
         this.cost = cost;
         this.deliveryServiceName = deliveryServiceName;
+        this.region = region;
     }
 
     public int getId() {

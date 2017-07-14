@@ -11,8 +11,8 @@ import org.springframework.data.repository.query.Param;
  */
 public interface SystemRequirementsDao extends JpaRepository<SystemRequirements, Integer> {
 
-    @Query("select s from SystemRequirements s left join fetch s.products where s.id=:id")
-    ModulesIncluded systemRequirementsWithProducts();
+    @Query("select distinct s from SystemRequirements s left join fetch s.products where s.id=:id")
+    SystemRequirements systemRequirementsWithProducts(@Param("id") int id);
 
 
 }

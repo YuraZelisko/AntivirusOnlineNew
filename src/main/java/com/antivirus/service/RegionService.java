@@ -1,5 +1,6 @@
 package com.antivirus.service;
 
+import com.antivirus.entity.DeliveryType;
 import com.antivirus.entity.Region;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,4 +16,5 @@ public interface RegionService {
     Region findOne(int id);
     void delete(int id);
     void update(Region region);
+    List<Region> regionWithDeliveries();
 }

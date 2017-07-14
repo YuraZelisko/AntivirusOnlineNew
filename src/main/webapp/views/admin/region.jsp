@@ -15,22 +15,13 @@
     <sf:form modelAttribute="region" method="post" action="/region?${_csrf.parameterName}=${_csrf.token}"
              enctype="multipart/form-data">
 
-        <sf:input path="name"/>
+        <sf:input path="name" placeholder="Name"/>
         <input name="image" type="file" class="form-control"/>
         <button><spring:message code="label.save_region"/> </button>
 
     </sf:form>
 </div>
 <div style="color: navy">
-
-    <%--<c:forEach var="region" items="${regions}">--%>
-        <%--${region.name}--%>
-        <%--<div>--%>
-        <%--<img src="${region.pathImage}" alt="" width="20%" height="20%">--%>
-        <%--</div>--%>
-        <%--<a href="/deleteRegion/${region.id}"><spring:message code="label.delete"/> </a><br>--%>
-    <%--</c:forEach>--%>
-
 
     <table class="table table-hover">
         <thead>
@@ -48,7 +39,7 @@
             <c:forEach var="region" items="${regions}">
 
             <td> ${region.name}</td>
-            <td><img src="${region.pathImage}" alt="" width="130px" height="100px"></td>
+            <td><img src="${region.pathImage}" alt="" width="160px" height="100px"></td>
             <td><a href="/deleteRegion/${region.id}"><spring:message code="label.delete"/> </a></td>
             <td> <a href="/updateRegion/${region.id}"><spring:message code="label.update"/> </a></td>
             <br></tr>

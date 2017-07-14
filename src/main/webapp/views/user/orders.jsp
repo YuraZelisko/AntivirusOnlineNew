@@ -13,19 +13,28 @@
 <h1><spring:message code="label.order_list"/></h1>
 <div>
    <sf:form modelAttribute="ord" method="post">
-       <sf:input path="dateTime"/>
 
+       <select name="product">
+           <c:forEach items="${products}" var="product">
+               <option value="${product.id}">
+                       ${product.name}
+               </option>
+           </c:forEach>
+       </select>
+
+       <select name="product">
+           <c:forEach items="${products}" var="product">
+               <option value="${product.id}">
+                       ${product.price}
+               </option>
+           </c:forEach>
+       </select>
+
+       <input type="text" placeholder="Insert quantity">
+       <button>Save</button>
 
    </sf:form>
-    <select name="product">
-        <c:forEach items="${products}" var="product">
-            <option value="${product}">
-                    ${product.name}
-            </option>
-        </c:forEach>
-    </select>
-    <input type="datetime" placeholder="Insert time">
-    <input type="text" placeholder="Insert quantity">
+
 
 
 </div>

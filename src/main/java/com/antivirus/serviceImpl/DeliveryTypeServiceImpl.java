@@ -18,6 +18,11 @@ public class DeliveryTypeServiceImpl implements DeliveryTypeService {
     private DeliveryTypeDao deliveryTypeDao;
 
     @Override
+    public  List<DeliveryType> deliveryWithRegion() {
+        return deliveryTypeDao.deliveryWithRegion();
+    }
+
+    @Override
     public void save(DeliveryType deliveryType) {
         deliveryTypeDao.save(deliveryType);
 
