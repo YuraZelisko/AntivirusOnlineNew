@@ -7,11 +7,11 @@
 <table class="table table-hover">
     <thead>
     <tr>
-        <th>name</th>
-        <th>description</th>
-        <th>price</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
         <th>Delivery</th>
-        <th>quantity</th>
+        <th>Quantity</th>
         <th>Delete</th>
     </tr>
     </thead>

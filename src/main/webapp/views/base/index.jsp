@@ -3,7 +3,22 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<script src="<c:url value="/js/search.js"/>"></script>
 <link rel="stylesheet" href="/css/index.css">
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.add-to-cart').on('click', function () {
+            $('html, body').animate({
+                'scrollTop': $(".cart_anchor").position().top
+            });
+            var itemIMG = $(this).parent().find('img').eq(0);
+            flyToElement($(itemIMG), $('.cart_anchor'));
+        });
+    });
+
+</script>
+
 <div class="hero">
     <div style="text-align: center">
         <h3 style="color: white"class="btn"><spring:message code="label.Hello_welcome"/> </h3><br>
@@ -13,19 +28,36 @@
         <%--<img src="https://static3.esetstatic.com/fileadmin/Images/INT/styles/thank-you-for-downloading/v9/img/1/1024x768.jpg" height="300" width="300">--%>
     </div>
 
+    <div style="margin-bottom: 10px; margin-top: 10px; width: 20%; float: right; padding-right: 10px">
+        <div data-role="rangeslider">
+            <p>
+                <label for="amount">Price range:</label>
+                <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+            </p>
+            <label for="price-min">Min:</label>
+            <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000" onchange="changeLabel()"
+                   oninput="searchPrices()">
+            <label for="price-max">Max:</label>
+            <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000" onchange="changeLabel()"
+                   oninput="searchPrices()">
+        </div>
+        <input style="margin-top: 5px" type="text" class="form-control" id="searchIn" oninput="searchInTable()"
+               placeholder="Search..."/>
+    </div>
+
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>name</th>
-            <th>description</th>
-            <th>price</th>
-            <th>quantity PC</th>
-            <th>License Duration</th>
-            <th>Image</th>
-            <th>module</th>
-            <th>requirements</th>
+            <th><spring:message code="label.name"/> </th>
+            <th><spring:message code="label.Description"/> </th>
+            <th><spring:message code="label.Price"/> </th>
+            <th><spring:message code="label.Quantity_PC"/> </th>
+            <th><spring:message code="label.License"/> </th>
+            <th><spring:message code="label.image"/> </th>
+            <th><spring:message code="label.Modules_Included"/> </th>
+            <th><spring:message code="label.system_requirement"/></th>
             <sec:authorize access="hasRole('ROLE_USER')">
-            <th>Basket</th>
+            <th><spring:message code="label.BASKET"/> </th>
             </sec:authorize>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
                 <th colspan="2">Action</th>
@@ -61,8 +93,3 @@
         </tbody>
     </table>
 </div>
-
-
-
-
-<%--https://codepen.io/ajaypatelaj/pen/zIBjJ--%>
