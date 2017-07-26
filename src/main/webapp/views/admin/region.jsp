@@ -10,7 +10,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<h1 style="color: white"><spring:message code="label.region"/></h1>
+<h1 style="text-align: center"><spring:message code="label.region"/></h1>
 <div>
     <sf:form modelAttribute="region" method="post" action="/region?${_csrf.parameterName}=${_csrf.token}"
              enctype="multipart/form-data">
@@ -21,7 +21,7 @@
 
     </sf:form>
 </div>
-<div style="color: navy">
+<div style="margin: 5px 120px" >
 
     <table class="table table-hover">
         <thead>

@@ -18,8 +18,6 @@ public class UserValidator implements Validator {
     @Override
     public void validate(Object o) throws Exception {
 
-        System.out.println("valid1");
-
         User user = (User) o;
         if (user.getName().isEmpty()) {
             throw new UserException(UserValidationMessages.EMPTY_USERNAME_FIELD);
@@ -36,10 +34,14 @@ public class UserValidator implements Validator {
         else if (!user.getEmail().contains("@")){
             throw new UserException(UserValidationMessages.WRONG_EMAIL);
         }
-        else if (user.getPassword().isEmpty()|| user.getPassword().length()<4 ){
+        else if (user.getPassword().isEmpty()){
+            throw new UserException(UserValidationMessages.EMPTY_PASSWORD_FIELD);
+        }
+        else if (user.getPassword().length()<4){
             throw new UserException(UserValidationMessages.TOO_SHORT_PASSWORD);
         }
-
-
+//        else if (user.getPassword().equals(user.getPassword())){
+//            throw new UserException(UserValidationMessages.TOO_SHORT_PASSWORD);
+//        }
     }
 }

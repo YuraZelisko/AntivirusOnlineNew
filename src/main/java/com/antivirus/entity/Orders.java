@@ -31,18 +31,22 @@ public class Orders {
     @ManyToMany
     @JoinTable(name = "delivery_orders", joinColumns = @JoinColumn(name = "orders_id"),
             inverseJoinColumns = @JoinColumn(name = "delivery_id"))
-    private List<DeliveryType> orders= new ArrayList<>();
+    private List<DeliveryType> deliveryTypes= new ArrayList<>();
 
 
     public Orders() {
     }
 
-    public Orders(LocalDateTime dateTime, int quantity, int totalPrice, User user, List<Product> products) {
+    public Orders(LocalDateTime dateTime) {
         this.dateTime = dateTime;
+    }
+
+    public Orders(LocalDateTime dateTime, int quantity, int totalPrice, User user) {
+        this.dateTime = LocalDateTime.now();
         this.quantity = quantity;
         this.totalPrice = totalPrice;
         this.user = user;
-        this.products = products;
+
     }
 
     public int getId() {

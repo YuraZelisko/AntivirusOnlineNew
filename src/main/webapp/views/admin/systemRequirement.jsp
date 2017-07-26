@@ -11,7 +11,7 @@
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<h1><spring:message code="label.system_requirement"/></h1>
+<h1 style="text-align: center"><spring:message code="label.system_requirement"/></h1>
 
 <sf:form modelAttribute="systemRequirement" method="post" action="/systemRequirement">
     <sf:input path="OSname" placeholder="OS name"/>

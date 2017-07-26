@@ -58,13 +58,32 @@ public class ProductServiceImpl implements ProductService{
             modulesIncluded.getProducts().add(product);
             modulesIncludedDao.save(modulesIncluded);
         }
+        productDao.save(product);
+    }
 
-//        sr = systemRequirementsDao.systemRequirementsWithProducts();
-//        SystemRequirements systemRequirements = systemRequirementsDao.systemRequirementsWithProducts(index);
-//        systemRequirements.getProducts().add(product);
-//        systemRequirementsDao.save(systemRequirements);
+    public void update(Product product,  MultipartFile image) {
 
 
+        String path = System.getProperty("catalina.home") + "/resources/"
+                + product.getName() + "/" + image.getOriginalFilename();
+
+        product.setPathImage("resources/" + product.getName() + "/" + image.getOriginalFilename());
+
+        File filePath = new File(path);
+
+        try {
+            filePath.mkdirs();
+            image.transferTo(filePath);
+        } catch (IOException e) {
+            System.out.println("error with file");
+        }
+
+//        ArrayList<Integer> ids,
+//        for (Integer id : ids) {
+//            ModulesIncluded modulesIncluded = modulesIncludedDao.modulesIncludedWithProducts(id);
+//            modulesIncluded.getProducts().add(product);
+//            modulesIncludedDao.save(modulesIncluded);
+//        }
         productDao.save(product);
     }
 

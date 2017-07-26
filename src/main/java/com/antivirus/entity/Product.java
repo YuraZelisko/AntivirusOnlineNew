@@ -16,8 +16,7 @@ public class Product {
     private double price;
     private int quantityPC;
     private int licenceDurationYears;
-
-
+    private int productQuantity;
 
     @ManyToMany
     @JoinTable(name = "orders_product", joinColumns = @JoinColumn(name = "product_id"),
@@ -49,22 +48,24 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String description, double price,
-                   int quantityPC, int licenceDurationYears) {
+    public Product(String name, String description, double price, int quantityPC,
+                   int licenceDurationYears) {
         this.name = name;
         this.description = description;
         this.price = price;
+        this.productQuantity=1;
         this.quantityPC = quantityPC;
         this.licenceDurationYears= licenceDurationYears;
         }
 
-    public Product(String name, String description, double price, int quantityPC,
+    public Product(String name, String description, double price,int quantityPC,
                    int licenceDurationYears, List<ModulesIncluded> modulesIncludeds,
                    SystemRequirements systemRequirements, String pathImage) {
         this.name = name;
         this.description = description;
         this.price = price;
         this.quantityPC = quantityPC;
+        this.productQuantity=1;
         this.licenceDurationYears = licenceDurationYears;
         this.modulesIncludeds = modulesIncludeds;
         this.systemRequirements = systemRequirements;
@@ -166,9 +167,13 @@ public class Product {
     public void setSystemRequirements(SystemRequirements systemRequirements) {
         this.systemRequirements = systemRequirements;
     }
+    public int getProductQuantity() {
+        return productQuantity;
+    }
 
-
-
+    public void setProductQuantity(int productQuantity) {
+        this.productQuantity = productQuantity;
+    }
     @Override
     public String toString() {
         return "Product{" +
@@ -177,12 +182,18 @@ public class Product {
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", quantityPC=" + quantityPC +
-                ", linseceDurationYears=" + licenceDurationYears +
+                ", licenceDurationYears=" + licenceDurationYears +
+                ", productQuantity=" + productQuantity +
                 ", orders=" + orders +
                 ", deliveryTypes=" + deliveryTypes +
+                ", users=" + users +
                 ", modulesIncludeds=" + modulesIncludeds +
                 ", systemRequirements=" + systemRequirements +
+                ", pathImage='" + pathImage + '\'' +
                 '}';
     }
+
+
+
 }
 

@@ -48,7 +48,6 @@ public class ProductController {
     @GetMapping("/product")
     public String product(Model model){
         model.addAttribute("products", productService.productIncludedWithModules());
-//        model.addAttribute("products", productService.productIncludedWithModules(id));
         model.addAttribute("product", new Product());
         model.addAttribute("modulesIncludeds", modulesIncludedService.findAll());
         model.addAttribute("systemRequirements", systemRequirementService.findAll());
@@ -58,7 +57,6 @@ public class ProductController {
     @PostMapping("/product")
     public String saveProduct(@ModelAttribute ("product") Product product,
                               @RequestParam ArrayList<Integer> modulesIncludeds,
-//                              @RequestParam SystemRequirements sr,
                               @RequestParam("image")MultipartFile image){
         productService.save(product, modulesIncludeds, image);
         return "redirect:/product";
@@ -84,7 +82,7 @@ public class ProductController {
     public String updateProduct(@ModelAttribute ("product") Product product,
                              @RequestAttribute("image") MultipartFile image,
                              @PathVariable int id,
-                             @RequestParam ArrayList<Integer> modulesIncludeds,
+//                             @RequestParam ArrayList<Integer> modulesIncludeds,
 
                              Model model) {
 
@@ -94,7 +92,9 @@ public class ProductController {
         if (image==null) {
             productService.update(product);
         } else {
-            productService.save(product, modulesIncludeds,  image);
+            productService.update(product,
+//                    modulesIncludeds,
+                    image);
             model.addAttribute("product", productService.findOne(id));
         }
         return "redirect:/product";

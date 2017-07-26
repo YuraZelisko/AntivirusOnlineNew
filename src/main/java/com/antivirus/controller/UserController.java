@@ -70,6 +70,11 @@ public class UserController {
                     e.getMessage().equals(UserValidationMessages.EMAIL_ALREADY_EXIST)){
                 model.addAttribute("useremailException", e.getMessage());
             }
+            else if(e.getMessage().equals(UserValidationMessages.TOO_SHORT_PASSWORD) ||
+                    e.getMessage().equals(UserValidationMessages.EMPTY_PASSWORD_FIELD) ||
+                    e.getMessage().equals(UserValidationMessages.WRONG_PASSWORD)){
+                model.addAttribute("useremailException", e.getMessage());
+            }
 
             return "views-user-registration";
         }
@@ -122,17 +127,20 @@ public class UserController {
     public String failureLogin(Model model, @RequestParam String username,
                                @RequestParam String password){
 
-        try {
-            validator.validate(new User(username,password));
-        } catch (Exception e) {
+        try
+        {
+            validator.validate(new User(username, password));
+        }
+        catch (Exception e)
+        {
             if(e.getMessage().equals(UserLoginValidationMessages.EMPTY_USERNAME_FIELD)||
                     e.getMessage().equals(UserLoginValidationMessages.EMPTY_PASSWORD_FIELD)||
-                    e.getMessage().equals(UserLoginValidationMessages.WRONG_USERNAME_OR_PASSWORD)){
+                    e.getMessage().equals(UserLoginValidationMessages.WRONG_USERNAME_OR_PASSWORD))
+            {
                 model.addAttribute("exception", e.getMessage());
             }
         }
         model.addAttribute("user", new User());
-
         return "views-user-registration";
     }
 

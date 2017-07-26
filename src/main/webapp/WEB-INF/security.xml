@@ -9,6 +9,8 @@
     <security:http use-expressions="true">
         <security:form-login login-page="/registration" login-processing-url="/login"
                              authentication-success-forward-url="/"/>
+                             <!--authentication-failure-forward-url="/failureLogin"/>-->
+
 
         <security:logout logout-url="/logout" logout-success-url="/"/>
         <security:intercept-url pattern="/country" access="hasRole('ROLE_ADMIN')"/>

@@ -16,18 +16,27 @@
     <div>
     <sec:authentication property="name"/>
     </div>
-    <sec:authorize access="!isAuthenticated()">
+    <sec:authorize access="!isAuthenticated() || hasRole('ROLE_USER') ">
+    <a href="/"><spring:message code="label.home"/> </a>
+    </sec:authorize>
+    <sec:authorize access="isAuthenticated()">
+    <a href="/delivery"><spring:message code="label.delivery_type"/> </a>
+    </sec:authorize>
+    <sec:authorize access="!isAuthenticated() ">
     <a href="/registration"><spring:message code="label.registration"/></a>
     </sec:authorize>
     <sec:authorize access="hasRole('ROLE_USER')">
-    <a href="/"><spring:message code="label.home"/> </a>
+
     <a href="/orders"><spring:message code="label.order_list"/> </a>
+
+    <a href="/profile"><spring:message code="label.PROFILE"/></a>
+    <a href="/basket"><spring:message code="label.BASKET"/></a>
+    </sec:authorize>
+    <sec:authorize access="isAuthenticated()">
     <a href="/product"><spring:message code="label.product_list"/> </a>
-    <a href="/delivery"><spring:message code="label.delivery_type"/> </a>
-        <a href="/profile"><spring:message code="label.PROFILE"/></a>
     </sec:authorize>
     <sec:authorize access="hasRole('ROLE_ADMIN')">
-   <a href="/opencity"><spring:message code="label.cities"/> </a>
+    <%--<a href="/opencity"><spring:message code="label.cities"/> </a>--%>
     <a href="/region"><spring:message code="label.region"/> </a>
     <a href="/modules"><spring:message code="label.modules"/> </a>
     <a href="/userList"><spring:message code="label.User_List"/> </a>

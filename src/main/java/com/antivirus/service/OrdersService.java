@@ -2,6 +2,7 @@ package com.antivirus.service;
 
 import com.antivirus.entity.Orders;
 
+import java.security.Principal;
 import java.util.List;
 
 /**
@@ -14,4 +15,8 @@ public interface OrdersService {
     Orders findOne(int id);
     void delete(int id);
     void update(Orders orders);
+    void addToBasket(Principal principal, int id);
+    void deleteFromBasket(int userId, int productId);
+    void buy(int userId);
+    List<Orders> ordersWithProducts();
 }

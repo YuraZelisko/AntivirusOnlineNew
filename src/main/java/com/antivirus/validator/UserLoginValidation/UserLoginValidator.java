@@ -20,6 +20,7 @@ public class UserLoginValidator implements Validator {
     @Autowired
     private BCryptPasswordEncoder encoder;
 
+
     @Override
     public void validate(Object o) throws Exception {
 
@@ -33,7 +34,6 @@ public class UserLoginValidator implements Validator {
                 userDao.findByName(user.getName()).getPassword())){
             throw new UserException(UserLoginValidationMessages.WRONG_USERNAME_OR_PASSWORD);
         }
-
-
     }
+
 }

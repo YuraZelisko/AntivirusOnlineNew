@@ -21,7 +21,8 @@ public interface ProductService {
     void update(Product product);
 
     void save(Product product, ArrayList<Integer> ids, MultipartFile image);
-
+    void update(Product product,  MultipartFile image);
+//    ArrayList<Integer> ids,
     List<Product> productIncludedWithModules();
 
 }

@@ -9,9 +9,11 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <h1 style="text-align: center"><spring:message code="label.Post_Service"/></h1>
-
+<div style="text-align: center">
+<sec:authorize access="hasRole('ROLE_ADMIN')">
 <sf:form modelAttribute="delivery" method="post" action="/delivery?${_csrf.parameterName}=${_csrf.token}">
     <sf:input path="deliveryServiceName" placeholder="Delivery Name"/>
     <sf:input path="cost" placeholder="cost"/>
@@ -28,6 +30,9 @@
     <button>save</button>
 
 </sf:form>
+    </div>
+</sec:authorize>
+<div style="margin: 5px 170px">
 <table class="table table-hover">
     <thead>
     <tr>
@@ -35,8 +40,10 @@
         <th>Cost</th>
         <th>Days To Arrive</th>
         <th>Region</th>
+        <sec:authorize access="hasRole('ROLE_ADMIN')">
         <th><spring:message code="label.delete"/></th>
         <th><spring:message code="label.update"/></th>
+        </sec:authorize>
     </tr>
     </thead>
     <tbody>
@@ -48,9 +55,12 @@
         <td>${delivery.cost}</td>
         <td> ${delivery.daysToArrive}</td>
         <td> ${delivery.region.name}</td>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
         <td><a href="/deleteDelivery/${delivery.id}"><spring:message code="label.delete"/> </a></td>
         <td> <a href="/updateDelivery/${delivery.id}"><spring:message code="label.update"/> </a></td>
+            </sec:authorize>
         <br></tr>
     </c:forEach>
     </tbody>
 </table>
+</div>

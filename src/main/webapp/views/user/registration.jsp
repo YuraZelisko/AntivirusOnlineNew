@@ -22,7 +22,7 @@
                <p style="color: mediumblue">${usernameException}</p>
                 <p style="color: red">${useremailException}</p>
                 <input name="name" type="text" class="input" id="user_name" autocomplete="off" placeholder="<spring:message code="label.Username"/> ">
-                <input name="email" type="email" class="input" id="user_email" autocomplete="off" placeholder="<spring:message code="label.Email"/> ">
+                <input name="email" type="text" class="input" id="user_email" autocomplete="off" placeholder="<spring:message code="label.Email"/> ">
                 <input name="password" type="password" class="input" id="user_pass" autocomplete="off" placeholder="<spring:message code="label.Password"/> ">
                 <input type="submit" class="button" value="<spring:message code="label.Sign_Up"/> ">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -33,11 +33,10 @@
 
         <div id="login-tab-content">
             <form class="login-form" action="/login" method="post">
+                <p style="color: mediumblue">${exception}</p>
+                <%--<p style="color: red">${loginException}</p>--%>
                 <input name = "username" type="text" class="input" id="user_login" autocomplete="off" placeholder="<spring:message code="label.Email_or_Username"/>">
                 <input name = "password" type="password" class="input" id="user_pass" autocomplete="off" placeholder="<spring:message code="label.Password"/>">
-                <input type="checkbox" class="checkbox" id="remember_me">
-                <label for="remember_me"><spring:message code="label.Remember_me"/> </label>
-
                 <input type="submit" class="button" value="<spring:message code="label.Login"/> ">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form><!--.login-form-->

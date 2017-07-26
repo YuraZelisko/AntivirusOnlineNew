@@ -17,18 +17,15 @@
 
 
 
-<h1><spring:message code="label.Modules_Included"/></h1>
-<div>
+<h1 style="text-align: center"><spring:message code="label.Modules_Included"/></h1>
+<div style="text-align: center">
     <sf:form modelAttribute="module" method="post" action="/modules">
         <sf:input path="name" placeholder="Name"/>
         <sf:input path="description" placeholder="Description"/>
         <button><spring:message code="label.save_new_module"/> </button>
-
-
     </sf:form>
 </div>
 <div>
-
     <table class="table table-hover">
         <thead>
         <tr>
@@ -72,11 +69,9 @@
                 <custom:pageable page="${modules}" cell="<li></li>" container="<ul class='pagination'></ul>"/>
             </div>
             <div class="col-md-2 col-xs-6">
-                <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><spring:message code="label.Size"/> <span
-                        class="caret"></span>
+
                  <custom:size posibleSizes="1,2,5,10" size="${modules.size}"/>
-                </button>
-            </div>
+              </div>
         </div>
     </div>
 </div>

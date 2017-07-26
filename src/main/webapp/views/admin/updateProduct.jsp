@@ -31,6 +31,10 @@
             <td><form:label path="quantityPC">QuantityPC</form:label></td>
             <td><form:input path="quantityPC"/></td>
         </tr>
+        <tr>
+            <td><form:label path="licenceDurationYears">Duration</form:label></td>
+            <td><form:input path="licenceDurationYears"/></td>
+        </tr>
         <td><form:label path="modulesIncludeds">Modules</form:label></td>
         <td>
             <select multiple name="modulesIncludeds">
