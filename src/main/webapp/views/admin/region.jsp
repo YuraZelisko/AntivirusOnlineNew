@@ -14,7 +14,7 @@
 <div>
     <sf:form modelAttribute="region" method="post" action="/region?${_csrf.parameterName}=${_csrf.token}"
              enctype="multipart/form-data">
-
+        <p>${CountryNameException}</p>
         <sf:input path="name" placeholder="Name"/>
         <input name="image" type="file" class="form-control"/>
         <button><spring:message code="label.save_region"/> </button>

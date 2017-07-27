@@ -17,5 +17,4 @@ public interface SystemRequirementsValidationMessages {
     String UNCORRECT_RAM_FIELD = "RAM FIELD MUST BE > 0";
 
     String EMPTY_OSLANGUAGE_FIELD = "EMPTY OS LANGUAGE";
-    String OSLANGUAGE_CONTAINS = "MUST CONTAINS Aa-Zz";
 }

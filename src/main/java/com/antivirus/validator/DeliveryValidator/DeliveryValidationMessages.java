@@ -1,0 +1,14 @@
+package com.antivirus.validator.DeliveryValidator;
+
+/**
+ * Created by User on 7/27/2017.
+ */
+public interface DeliveryValidationMessages {
+
+    String DELIVERY_NAME_EMPTY="DELIVERY NAME EMPTY";
+    String DELIVERY_NAME_EXIST="DELIVERY NAME ALREADY EXIST";
+    String DELIVERY_COST_EMPTY="DELIVERY COST EMPTY OR WRONG";
+    String DELIVERY_COST_EXCEPTION="DELIVERY_COST_EXCEPTION <=0";
+    String DELIVERY_DAYS_EMPTY="DELIVERY DAYS EMPTY OR WRONG";
+    String DELIVERY_DAYS_EXCEPTION="DELIVERY DAYS EXCEPTION <=0";
+}

@@ -32,21 +32,27 @@ public class SystemRequirementController {
         try {
             System.out.println("systemRequirement = [" + systemRequirement + "], model = [" + model + "]");
             systemRequirementService.save(systemRequirement);
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             System.out.println("ываываавыпавпвапвапвапвапЭ");
            if (e.getMessage().equals(SystemRequirementsValidationMessages.EMPTY_OSNAME_FIELD) ||
                    e.getMessage().equals(SystemRequirementsValidationMessages.OSNAME_ALREADY_EXIST)){
                model.addAttribute("SRNameException", e.getMessage());
-           }else if (e.getMessage().equals(SystemRequirementsValidationMessages.CHOOSE_BIT_DEPTH)){
+           }
+           else if (e.getMessage().equals(SystemRequirementsValidationMessages.CHOOSE_BIT_DEPTH)){
                model.addAttribute("SRBitException", e.getMessage());
-           }else if (e.getMessage().equals(SystemRequirementsValidationMessages.UNCORRECT_AMOUNT_FIELD)){
+           }
+           else if (e.getMessage().equals(SystemRequirementsValidationMessages.UNCORRECT_AMOUNT_FIELD)){
                model.addAttribute("SRAmountException", e.getMessage());
+
            }else if (e.getMessage().equals(SystemRequirementsValidationMessages.UNCORRECT_RAM_FIELD)){
                model.addAttribute("SRRAMException",e.getMessage());
-           }else if (e.getMessage().equals(SystemRequirementsValidationMessages.EMPTY_OSLANGUAGE_FIELD)||
-                    e.getMessage().equals(SystemRequirementsValidationMessages.OSLANGUAGE_CONTAINS)){
+           }
+           else if (e.getMessage().equals(SystemRequirementsValidationMessages.EMPTY_OSLANGUAGE_FIELD)){
                model.addAttribute("SRLangException", e.getMessage());
            }
+            model.addAttribute("systemRequirements", systemRequirementService.findAll());
+            return "views-admin-systemRequirement";
         }
         return "redirect:/systemRequirement";
     }

@@ -13,7 +13,7 @@ public class DeliveryType {
     private int id;
 
     private int daysToArrive;
-    private double cost;
+    private int cost;
     private String deliveryServiceName;
 
     @ManyToOne
@@ -27,7 +27,7 @@ public class DeliveryType {
     public DeliveryType() {
     }
 
-    public DeliveryType(int daysToArrive, double cost, String deliveryServiceName, Region region) {
+    public DeliveryType(int daysToArrive, int cost, String deliveryServiceName, Region region) {
         this.daysToArrive = daysToArrive;
         this.cost = cost;
         this.deliveryServiceName = deliveryServiceName;
@@ -42,11 +42,11 @@ public class DeliveryType {
         this.id = id;
     }
 
-    public double getCost() {
+    public int getCost() {
         return cost;
     }
 
-    public void setCost(double cost) {
+    public void setCost(int cost) {
         this.cost = cost;
     }
 

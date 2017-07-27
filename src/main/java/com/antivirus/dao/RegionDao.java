@@ -15,4 +15,6 @@ public interface RegionDao extends JpaRepository<Region, Integer> {
 
     @Query ("select distinct r from Region  r left  join  fetch  r.deliveryTypes")
     List<Region> regionWithDeliveries();
+
+    Region findByName(String name);
 }

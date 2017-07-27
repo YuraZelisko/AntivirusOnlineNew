@@ -4,11 +4,12 @@ import com.antivirus.dao.SystemRequirementsDao;
 import com.antivirus.entity.SystemRequirements;
 import com.antivirus.validator.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-/**
- * Created by User on 7/24/2017.
- */
+
+@Component
 public class SystemRequirementsValidator implements Validator{
+
     @Autowired
     private SystemRequirementsDao systemRequirementsDao;
 
@@ -34,8 +35,6 @@ public class SystemRequirementsValidator implements Validator{
         else if (systemRequirementsDao.findByOSlanguage(systemRequirements.getOSlanguage())!=null) {
             throw new SystemRequirementsException(SystemRequirementsValidationMessages.EMPTY_OSLANGUAGE_FIELD);
         }
-        else if (systemRequirements.getOSlanguage().contains("0-9")) {
-            throw new SystemRequirementsException(SystemRequirementsValidationMessages.OSLANGUAGE_CONTAINS);
-        }
+
     }
 }

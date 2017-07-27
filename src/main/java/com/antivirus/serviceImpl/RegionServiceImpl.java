@@ -4,7 +4,9 @@ import com.antivirus.dao.RegionDao;
 import com.antivirus.entity.DeliveryType;
 import com.antivirus.entity.Region;
 import com.antivirus.service.RegionService;
+import com.antivirus.validator.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,11 +21,14 @@ import java.util.List;
 public class RegionServiceImpl implements RegionService{
     @Autowired
     private RegionDao regionDao;
+    @Autowired
+    @Qualifier("regionValidator")
+    private Validator validator;
 
     @Override
 
-    public void save(Region region, MultipartFile image){
-
+    public void save(Region region, MultipartFile image) throws Exception {
+        validator.validate(region);
         regionDao.saveAndFlush(region);
 
         String path = System.getProperty("catalina.home") + "/resources/"

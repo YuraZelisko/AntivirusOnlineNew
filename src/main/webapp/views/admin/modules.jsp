@@ -20,6 +20,8 @@
 <h1 style="text-align: center"><spring:message code="label.Modules_Included"/></h1>
 <div style="text-align: center">
     <sf:form modelAttribute="module" method="post" action="/modules">
+        ${moduleNameException}
+        ${moduleDescException}
         <sf:input path="name" placeholder="Name"/>
         <sf:input path="description" placeholder="Description"/>
         <button><spring:message code="label.save_new_module"/> </button>

@@ -58,7 +58,8 @@ public class UserController {
         try {
             userService.save(user);
             System.out.println("user = [" + user + "], model = [" + model + "]");
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             if (e.getMessage().equals(UserValidationMessages.EMPTY_USERNAME_FIELD) ||
                     e.getMessage().equals(UserValidationMessages.USERNAME_ALREADY_EXIST)){
                     model.addAttribute("usernameException", e.getMessage());

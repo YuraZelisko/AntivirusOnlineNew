@@ -3,7 +3,9 @@ package com.antivirus.serviceImpl;
 import com.antivirus.dao.DeliveryTypeDao;
 import com.antivirus.entity.DeliveryType;
 import com.antivirus.service.DeliveryTypeService;
+import com.antivirus.validator.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,6 +18,9 @@ public class DeliveryTypeServiceImpl implements DeliveryTypeService {
 
     @Autowired
     private DeliveryTypeDao deliveryTypeDao;
+    @Autowired
+    @Qualifier("deliveryValidator")
+    private Validator validator;
 
     @Override
     public  List<DeliveryType> deliveryWithRegion() {
@@ -23,7 +28,8 @@ public class DeliveryTypeServiceImpl implements DeliveryTypeService {
     }
 
     @Override
-    public void save(DeliveryType deliveryType) {
+    public void save(DeliveryType deliveryType) throws Exception{
+        validator.validate(deliveryType);
         deliveryTypeDao.save(deliveryType);
 
     }

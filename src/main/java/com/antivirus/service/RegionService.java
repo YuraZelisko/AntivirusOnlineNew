@@ -11,10 +11,11 @@ import java.util.List;
  */
 public interface RegionService {
 
-    void save(Region region, MultipartFile image);
+    void save(Region region, MultipartFile image) throws Exception;
     List<Region> findAll();
     Region findOne(int id);
     void delete(int id);
     void update(Region region);
     List<Region> regionWithDeliveries();
+
 }

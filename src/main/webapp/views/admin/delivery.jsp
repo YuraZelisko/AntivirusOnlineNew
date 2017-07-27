@@ -15,6 +15,9 @@
 <div style="text-align: center">
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 <sf:form modelAttribute="delivery" method="post" action="/delivery?${_csrf.parameterName}=${_csrf.token}">
+    ${deliveryNameException}
+    ${deliveryCostException}
+    ${deliveryDaysException}
     <sf:input path="deliveryServiceName" placeholder="Delivery Name"/>
     <sf:input path="cost" placeholder="cost"/>
     <sf:input path="daysToArrive" placeholder="daysToArrive"/>

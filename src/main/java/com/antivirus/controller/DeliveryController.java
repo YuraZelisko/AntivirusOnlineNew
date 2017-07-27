@@ -5,6 +5,7 @@ import com.antivirus.entity.DeliveryType;
 import com.antivirus.entity.Region;
 import com.antivirus.service.DeliveryTypeService;
 import com.antivirus.service.RegionService;
+import com.antivirus.validator.DeliveryValidator.DeliveryValidationMessages;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -40,8 +41,24 @@ public class DeliveryController {
     }
 
     @PostMapping("/delivery")
-    public String region(@ModelAttribute("delivery") DeliveryType deliveryType){
-        deliveryTypeService.save(deliveryType);
+    public String region(@ModelAttribute("delivery") DeliveryType deliveryType, Model model){
+        try {
+            deliveryTypeService.save(deliveryType);
+        } catch (Exception e) {
+            if (e.getMessage().equals(DeliveryValidationMessages.DELIVERY_NAME_EMPTY)||
+                    (e.getMessage().equals(DeliveryValidationMessages.DELIVERY_NAME_EXIST))){
+                model.addAttribute("deliveryNameException", e.getMessage());
+            } else if (e.getMessage().equals(DeliveryValidationMessages.DELIVERY_COST_EMPTY)||
+                    e.getMessage().equals(DeliveryValidationMessages.DELIVERY_COST_EXCEPTION)){
+                model.addAttribute("deliveryCostException", e.getMessage());
+            } else if (e.getMessage().equals(DeliveryValidationMessages.DELIVERY_DAYS_EMPTY)||
+                    e.getMessage().equals(DeliveryValidationMessages.DELIVERY_DAYS_EXCEPTION)) {
+                model.addAttribute("deliveryDaysException", e.getMessage());
+            }
+            model.addAttribute("deliveries", deliveryTypeService.findAll());
+            model.addAttribute("regions", regionService.findAll());
+            return "views-admin-delivery";
+        }
         return "redirect:/delivery";
     }
 

@@ -14,4 +14,7 @@ public interface DeliveryTypeDao extends JpaRepository<DeliveryType, Integer> {
 
     @Query("select d from DeliveryType d left join fetch d.region")
     List<DeliveryType> deliveryWithRegion();
+    DeliveryType findByDeliveryServiceName(String name);
+//    DeliveryType findByCost(int cost);
+//    DeliveryType findByDaysToArrive(int days);
 }

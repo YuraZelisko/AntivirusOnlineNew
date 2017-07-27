@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface DeliveryTypeService {
 
-    void save(DeliveryType deliveryType);
+    void save(DeliveryType deliveryType) throws Exception;
     List<DeliveryType> findAll();
     DeliveryType findOne(int id);
     void delete(int id);

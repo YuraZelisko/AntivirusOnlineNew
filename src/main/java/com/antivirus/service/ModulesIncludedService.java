@@ -11,7 +11,7 @@ import java.util.List;
  */
 public interface ModulesIncludedService {
 
-    void save(ModulesIncluded modulesIncluded);
+    void save(ModulesIncluded modulesIncluded) throws Exception;
     List<ModulesIncluded> findAll();
     ModulesIncluded findOne(int id);
     void delete(int id);

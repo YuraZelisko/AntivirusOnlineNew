@@ -12,4 +12,6 @@ public interface ModulesIncludedDao extends JpaRepository<ModulesIncluded, Integ
 
     @Query("select m from ModulesIncluded m left join fetch m.products where m.id=:id")
     ModulesIncluded modulesIncludedWithProducts(@Param("id") int id);
+    ModulesIncluded findByName(String name);
+    ModulesIncluded findByDescription(String description);
 }

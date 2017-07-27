@@ -2,6 +2,7 @@ package com.antivirus.controller;
 
 import com.antivirus.entity.ModulesIncluded;
 import com.antivirus.service.ModulesIncludedService;
+import com.antivirus.validator.ModulesValidator.ModuleValidationMessages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -26,13 +27,28 @@ public class ModuleController {
     @GetMapping("/modules")
     public String modules(Model model, @PageableDefault Pageable pageble){
         model.addAttribute("modules", modulesIncludedService.findAllPages(pageble));
+//        model.addAttribute("modulesIncludeds", modulesIncludedService.findAll());
         model.addAttribute("module", new ModulesIncluded());
         return "views-admin-modules";
     }
 
     @PostMapping("/modules")
-    public String saveModules(@ModelAttribute ("module") ModulesIncluded modulesIncluded){
-        modulesIncludedService.save(modulesIncluded);
+    public String saveModules(@ModelAttribute ("module") ModulesIncluded modulesIncluded, Model model,
+                              @PageableDefault Pageable pageble){
+        try {
+            modulesIncludedService.save(modulesIncluded);
+        } catch (Exception e) {
+            if (e.getMessage().equals(ModuleValidationMessages.NAME_FIELD_IS_EMPTY)) {
+                model.addAttribute("moduleNameException", e.getMessage());
+            } else if (e.getMessage().equals(ModuleValidationMessages.NAME_ALREADY_EXIST)) {
+                model.addAttribute("moduleNameException", e.getMessage());
+            } else if (e.getMessage().equals(ModuleValidationMessages.DESCRIPTION_FIELD_IS_EMPTY)){
+                model.addAttribute("moduleDescException", e.getMessage());
+            } else if (e.getMessage().equals(ModuleValidationMessages.DESCRIPTION_ALREADY_EXIST))
+                model.addAttribute("moduleDescException", e.getMessage());
+             model.addAttribute("modules", modulesIncludedService.findAllPages(pageble));
+            return "views-admin-modules";
+        }
         return "redirect:/modules";
     }
     @GetMapping("/deleteModule/{id}")
