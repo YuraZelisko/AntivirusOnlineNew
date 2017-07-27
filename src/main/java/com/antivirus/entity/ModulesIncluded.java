@@ -18,7 +18,7 @@ public class ModulesIncluded {
     @JoinTable(name = "modules_product", joinColumns = @JoinColumn(name = "modules_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
 
-    private List<Product> products= new ArrayList();
+    private List<Product> products= new ArrayList<>();
 
     public ModulesIncluded() {
     }

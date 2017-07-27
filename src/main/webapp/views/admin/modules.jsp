@@ -29,8 +29,8 @@
     <table class="table table-hover">
         <thead>
         <tr>
-            <th>Module name</th>
-            <th>Description</th>
+            <th><spring:message code="label.Modules_Included_name"/></th>
+            <th><spring:message code="label.Description"/></th>
 
             <th><spring:message code="label.delete"/></th>
             <th><spring:message code="label.update"/></th>

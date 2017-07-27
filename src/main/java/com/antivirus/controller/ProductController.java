@@ -7,7 +7,6 @@ import com.antivirus.entity.Product;
 import com.antivirus.entity.SystemRequirements;
 import com.antivirus.service.ModulesIncludedService;
 import com.antivirus.service.ProductService;
-import com.antivirus.service.RegionService;
 import com.antivirus.service.SystemRequirementService;
 //import jdk.internal.cmm.SystemResourcePressureImpl;
 import org.springframework.beans.factory.annotation.Autowired;

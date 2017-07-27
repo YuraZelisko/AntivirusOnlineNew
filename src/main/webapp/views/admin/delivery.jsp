@@ -18,7 +18,7 @@
     <sf:input path="deliveryServiceName" placeholder="Delivery Name"/>
     <sf:input path="cost" placeholder="cost"/>
     <sf:input path="daysToArrive" placeholder="daysToArrive"/>
-    <sf:label path="region">Regions:</sf:label>
+    <sf:label path="region"><spring:message code="label.region"/></sf:label>
     <sf:select path="region" items="${regions}" itemLabel="name" itemValue="id"/>
 
 
@@ -27,7 +27,7 @@
             <%--<option value="${region.id}">${region.name}</option>--%>
         <%--</c:forEach>--%>
     <%--</select>--%>
-    <button>save</button>
+    <button><spring:message code="label.Save"/></button>
 
 </sf:form>
     </div>
@@ -36,10 +36,10 @@
 <table class="table table-hover">
     <thead>
     <tr>
-        <th>Delivery Service Name </th>
-        <th>Cost</th>
-        <th>Days To Arrive</th>
-        <th>Region</th>
+        <th><spring:message code="label.Post_Service_Name"/></th>
+        <th><spring:message code="label.Cost"/></th>
+        <th><spring:message code="label.Days_to_Arrive"/></th>
+        <th><spring:message code="label.region"/></th>
         <sec:authorize access="hasRole('ROLE_ADMIN')">
         <th><spring:message code="label.delete"/></th>
         <th><spring:message code="label.update"/></th>

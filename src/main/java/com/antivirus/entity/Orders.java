@@ -42,7 +42,7 @@ public class Orders {
     }
 
     public Orders(LocalDateTime dateTime, int quantity, int totalPrice, User user) {
-        this.dateTime = LocalDateTime.now();
+        this.dateTime = dateTime;
         this.quantity = quantity;
         this.totalPrice = totalPrice;
         this.user = user;

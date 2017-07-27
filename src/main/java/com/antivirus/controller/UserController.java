@@ -53,8 +53,6 @@ public class UserController {
 
     public String registration(@ModelAttribute("user") User user, Model model){
 
-        System.out.println("user = " + user);
-
         String uuid = UUID.randomUUID().toString();
         user.setUuid(uuid);
         try {

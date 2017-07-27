@@ -1,11 +1,9 @@
 package com.antivirus.controller;
 
-import com.antivirus.entity.ModulesIncluded;
 import com.antivirus.entity.SystemRequirements;
 import com.antivirus.service.SystemRequirementService;
+import com.antivirus.validator.SystemReqirementsValidator.SystemRequirementsValidationMessages;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,8 +28,26 @@ public class SystemRequirementController {
     }
 
     @PostMapping("/systemRequirement")
-    public String modules(@ModelAttribute("systemRequirement") SystemRequirements systemRequirement){
-        systemRequirementService.save(systemRequirement);
+    public String modules(@ModelAttribute("systemRequirement") SystemRequirements systemRequirement, Model model)  {
+        try {
+            System.out.println("systemRequirement = [" + systemRequirement + "], model = [" + model + "]");
+            systemRequirementService.save(systemRequirement);
+        } catch (Exception e) {
+            System.out.println("ываываавыпавпвапвапвапвапЭ");
+           if (e.getMessage().equals(SystemRequirementsValidationMessages.EMPTY_OSNAME_FIELD) ||
+                   e.getMessage().equals(SystemRequirementsValidationMessages.OSNAME_ALREADY_EXIST)){
+               model.addAttribute("SRNameException", e.getMessage());
+           }else if (e.getMessage().equals(SystemRequirementsValidationMessages.CHOOSE_BIT_DEPTH)){
+               model.addAttribute("SRBitException", e.getMessage());
+           }else if (e.getMessage().equals(SystemRequirementsValidationMessages.UNCORRECT_AMOUNT_FIELD)){
+               model.addAttribute("SRAmountException", e.getMessage());
+           }else if (e.getMessage().equals(SystemRequirementsValidationMessages.UNCORRECT_RAM_FIELD)){
+               model.addAttribute("SRRAMException",e.getMessage());
+           }else if (e.getMessage().equals(SystemRequirementsValidationMessages.EMPTY_OSLANGUAGE_FIELD)||
+                    e.getMessage().equals(SystemRequirementsValidationMessages.OSLANGUAGE_CONTAINS)){
+               model.addAttribute("SRLangException", e.getMessage());
+           }
+        }
         return "redirect:/systemRequirement";
     }
     @GetMapping("/deleteSystemRequirement/{id}")

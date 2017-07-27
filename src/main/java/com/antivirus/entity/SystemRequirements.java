@@ -11,7 +11,7 @@ public class SystemRequirements {
     private int id;
 
     private String OSname;
-    private boolean bitSystem;
+    private String bitSystem;
     private int spaceAmount;
     private String OSlanguage;
     private int RAM;
@@ -22,7 +22,7 @@ public class SystemRequirements {
     public SystemRequirements() {
     }
 
-    public SystemRequirements(String OSname, boolean bitSystem, int spaceAmount, String OSlanguage, int RAM) {
+    public SystemRequirements(String OSname, String bitSystem, int spaceAmount, String OSlanguage, int RAM) {
         this.OSname = OSname;
         this.bitSystem = bitSystem;
         this.spaceAmount = spaceAmount;
@@ -46,11 +46,11 @@ public class SystemRequirements {
         this.OSname = OSname;
     }
 
-    public boolean isBitSystem() {
+    public String getBitSystem() {
         return bitSystem;
     }
 
-    public void setBitSystem(boolean bitSystem) {
+    public void setBitSystem(String bitSystem) {
         this.bitSystem = bitSystem;
     }
 

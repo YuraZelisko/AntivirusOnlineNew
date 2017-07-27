@@ -89,6 +89,17 @@ public class OrdersServiceImpl implements OrdersService{
     }
 
     @Override
+    public void getTotalPrice(int id) {
+       Orders orders = ordersDao.findOne(id);
+        int price = 0 ;
+        for (Product product: orders.getProducts())
+        {
+            price += product.getPrice() * product.getProductQuantity();
+            orders.setTotalPrice(price);
+        }
+    }
+
+    @Override
     public List<Orders> ordersWithProducts() {
         return ordersDao.ordersWithProducts();
     }

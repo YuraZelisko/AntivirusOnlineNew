@@ -31,18 +31,18 @@
     <div style="margin-bottom: 10px; margin-top: 10px; width: 20%; float: right; padding-right: 10px">
         <div data-role="rangeslider">
             <p>
-                <label for="amount">Price range:</label>
+                <label for="amount"><spring:message code="label.Price_range"/></label>
                 <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
             </p>
-            <label for="price-min">Min:</label>
+            <label for="price-min"><spring:message code="label.min"/> </label>
             <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000" onchange="changeLabel()"
                    oninput="searchPrices()">
-            <label for="price-max">Max:</label>
+            <label for="price-max"><spring:message code="label.max"/></label>
             <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000" onchange="changeLabel()"
                    oninput="searchPrices()">
         </div>
         <input style="margin-top: 5px" type="text" class="form-control" id="searchIn" oninput="searchInTable()"
-               placeholder="Search..."/>
+               placeholder="<spring:message code="label.search"/>"/>
     </div>
 
     <table class="table table-hover">
@@ -82,7 +82,7 @@
 
                 <td>${product.systemRequirements.OSname}</td>
                 <sec:authorize access="hasRole('ROLE_USER')">
-                <td><a href="/addToBasket/${product.id}">In Basket</a></td>
+                <td><a href="/addToBasket/${product.id}"><spring:message code="label.InBasket"/></a></td>
                 </sec:authorize>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
                     <td><a href="/deleteProduct/${product.id}"><spring:message code="label.delete"/> </a></td>

@@ -18,14 +18,14 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>Name</th>
-                <th>Email</th>
+                <th><spring:message code="label.name"/></th>
+                <th><spring:message code="label.Email"/></th>
                 <sec:authorize access="hasRole('ROLE_ADMIN')">
-                <th>Password</th>
+                <th><spring:message code="label.Password"/></th>
                 </sec:authorize>
-                <th>Role</th>
-                <th>Orders</th>
-                <th>Update</th>
+                <th><spring:message code="label.Role"/></th>
+                <th><spring:message code="label.orders"/></th>
+                <th><spring:message code="label.update"/></th>
             </tr>
             </thead>
             <tbody>

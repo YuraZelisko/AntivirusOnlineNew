@@ -14,28 +14,35 @@
 <h1 style="text-align: center"><spring:message code="label.system_requirement"/></h1>
 
 <sf:form modelAttribute="systemRequirement" method="post" action="/systemRequirement">
+    <form action="/systemRequirement" method="post">
+    <p style="color: mediumblue">${SRNameException}</p>
+    <p style="color: red">${SRBitException}</p>
+    <p style="color: red">${SRAmountException}</p>
+    <p style="color: red">${SRRAMException}</p>
+    <p style="color: red">${SRLangException}</p>
     <sf:input path="OSname" placeholder="OS name"/>
     <%--<sf:input path="bitSystem"/>--%>
 
     <label for="bit32">x32</label>
-    <input type="radio" name="bitSystem" id="bit32" value="false" />
+    <input type="radio" name="bitSystem" id="bit32" value="x32" />
     <label for="bit64">x64</label>
-    <input type="radio" name="bitSystem" id="bit64" value="true" />
+    <input type="radio" name="bitSystem" id="bit64" value="x64" />
 
     <sf:input path="spaceAmount" placeholder="Space Amount"/>
     <sf:input path="RAM" placeholder="RAM"/>
     <sf:input path="OSlanguage" placeholder="OS language"/>
     <button><spring:message code="label.save_requirements"/></button>
-
+    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </form>
 </sf:form>
 <table class="table table-hover">
 <thead>
 <tr>
-    <th>OS name </th>
-    <th>Bit of system</th>
-    <th>spaceAmount</th>
+    <th><spring:message code="label.OS_name"/></th>
+    <th><spring:message code="label.bit_system"/></th>
+    <th><spring:message code="label.spaceAmount"/></th>
     <th>RAM</th>
-    <th>OS language</th>
+    <th><spring:message code="label.OS_language"/></th>
     <th><spring:message code="label.delete"/></th>
     <th><spring:message code="label.delete"/></th>
 </tr>

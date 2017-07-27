@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface SystemRequirementService {
 
-    void save(SystemRequirements systemRequirements);
+    void save(SystemRequirements systemRequirements) throws Exception;
     List<SystemRequirements> findAll();
     SystemRequirements findOne(int id);
     void delete(int id);

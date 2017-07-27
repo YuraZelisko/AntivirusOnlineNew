@@ -13,7 +13,7 @@ public class Product {
 
     private String name;
     private String description;
-    private int price;
+    private double price;
     private int quantityPC;
     private int licenceDurationYears;
     private int productQuantity;
@@ -21,23 +21,23 @@ public class Product {
     @ManyToMany
     @JoinTable(name = "orders_product", joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "orders_id"))
-    private List<Orders> orders= new ArrayList();
+    private List<Orders> orders= new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "delivery_product", joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "delivery_id"))
-    private List<DeliveryType> deliveryTypes= new ArrayList();
+    private List<DeliveryType> deliveryTypes= new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "user_product", joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id"))
-    private List<User> users= new ArrayList();
+    private List<User> users= new ArrayList<>();
 
     @ManyToMany
     @JoinTable(name = "modules_product", joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "modules_id"))
 
-    private List<ModulesIncluded> modulesIncludeds= new ArrayList();
+    private List<ModulesIncluded> modulesIncludeds= new ArrayList<>();
 
 
     @ManyToOne
@@ -48,7 +48,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String description, int price, int quantityPC,
+    public Product(String name, String description, double price, int quantityPC,
                    int licenceDurationYears) {
         this.name = name;
         this.description = description;
@@ -58,7 +58,7 @@ public class Product {
         this.licenceDurationYears= licenceDurationYears;
         }
 
-    public Product(String name, String description, int price,int quantityPC,
+    public Product(String name, String description, double price,int quantityPC,
                    int licenceDurationYears, List<ModulesIncluded> modulesIncludeds,
                    SystemRequirements systemRequirements, String pathImage) {
         this.name = name;

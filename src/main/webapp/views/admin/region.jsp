@@ -27,8 +27,8 @@
         <thead>
         <tr>
 
-            <th>Region</th>
-            <th>Image</th>
+            <th><spring:message code="label.region"/></th>
+            <th><spring:message code="label.image"/> </th>
             <th><spring:message code="label.delete"/></th>
             <th><spring:message code="label.update"/></th>
         </tr>

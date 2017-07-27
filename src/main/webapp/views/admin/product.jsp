@@ -22,11 +22,11 @@
          enctype="multipart/form-data">
 
     <input name="image" type="file" class="form-control"/>
-    <input name="name" type="text" placeholder="name">
-    <input name="description" type="text" placeholder="description">
-    <input name="price" type="number" placeholder="price">
-    <input name="quantityPC" type="number" placeholder="PC quantity">
-    <input name="licenceDurationYears" type="number" placeholder="Licence Duration">
+    <input name="name" type="text" placeholder=<spring:message code="label.name"/>>
+    <input name="description" type="text" placeholder=<spring:message code="label.Description"/>>
+    <input name="price" type="number" placeholder=<spring:message code="label.Price"/>>
+    <input name="quantityPC" type="number" placeholder=<spring:message code="label.Quantity_PC"/>>
+    <input name="licenceDurationYears" type="number" placeholder=<spring:message code="label.License"/>>
 
     <select multiple name="modulesIncludeds">
         <c:forEach var="modulesIncluded" items="${modulesIncludeds}">
@@ -40,7 +40,7 @@
         </c:forEach>
     </select>
 
-    <button><spring:message code="label.Buy_this"/></button>
+    <button><spring:message code="label.Save"/></button>
 
 </sf:form>
 </sec:authorize>
@@ -48,16 +48,16 @@
 <table class="table table-hover">
     <thead>
     <tr>
-        <th>name</th>
-        <th>description</th>
-        <th>price</th>
-        <th>quantity PC</th>
-        <th>License Duration</th>
-        <th>Image</th>
-        <th>module</th>
-        <th>requirements</th>
+        <th><spring:message code="label.name"/></th>
+        <th><spring:message code="label.Description"/></th>
+        <th><spring:message code="label.Price"/></th>
+        <th><spring:message code="label.Quantity_PC"/></th>
+        <th><spring:message code="label.License"/></th>
+        <th><spring:message code="label.image"/></th>
+        <th><spring:message code="label.modules"/></th>
+        <th><spring:message code="label.system_requirement"/></th>
         <sec:authorize access="hasRole('ROLE_ADMIN')">
-        <th colspan="2">Action</th>
+        <th colspan="2"><spring:message code="label.Action"/></th>
         </sec:authorize>
     </tr>
     </thead>

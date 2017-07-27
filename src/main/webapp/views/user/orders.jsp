@@ -9,20 +9,18 @@
         <thead>
         <tr>
             <th>№</th>
-            <th>Time</th>
-            <th>Quantity</th>
-            <th>User name</th>
-            <th>Products</th>
-            <th>Total</th>
+            <th><spring:message code="label.time"/></th>
+            <th><spring:message code="label.Username"/></th>
+            <th><spring:message code="label.product"/></th>
+            <th><spring:message code="label.total"/></th>
 
         </tr>
         </thead>
         <tbody>
-        <c:forEach var="orders" items="${orderss}">
+        <c:forEach var="orders" items="${ordersAll}">
             <tr  style="border: solid">
                 <td>${orders.id}</td>
                 <td>${orders.dateTime}</td>
-                <td>${orders.quantity}</td>
                 <td>${orders.user.name}</td>
                 <td>
                     <c:forEach var="order" items="${orders.products}">

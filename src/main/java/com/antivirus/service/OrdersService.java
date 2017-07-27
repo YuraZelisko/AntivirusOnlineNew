@@ -18,5 +18,6 @@ public interface OrdersService {
     void addToBasket(Principal principal, int id);
     void deleteFromBasket(int userId, int productId);
     void buy(int userId);
+    public void getTotalPrice(int id);
     List<Orders> ordersWithProducts();
 }
