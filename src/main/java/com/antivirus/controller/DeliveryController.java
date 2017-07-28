@@ -46,8 +46,9 @@ public class DeliveryController {
             deliveryTypeService.save(deliveryType);
         } catch (Exception e) {
             if (e.getMessage().equals(DeliveryValidationMessages.DELIVERY_NAME_EMPTY)||
-                    (e.getMessage().equals(DeliveryValidationMessages.DELIVERY_NAME_EXIST))){
+                    e.getMessage().equals(DeliveryValidationMessages.DELIVERY_NAME_EXIST)){
                 model.addAttribute("deliveryNameException", e.getMessage());
+                System.out.println("oooooooooooooooooooooooo");
             } else if (e.getMessage().equals(DeliveryValidationMessages.DELIVERY_COST_EMPTY)||
                     e.getMessage().equals(DeliveryValidationMessages.DELIVERY_COST_EXCEPTION)){
                 model.addAttribute("deliveryCostException", e.getMessage());

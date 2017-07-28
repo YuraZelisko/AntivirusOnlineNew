@@ -15,7 +15,7 @@ public class Region {
     private String name;
 
     @OneToMany(mappedBy = "region")
-    private Set<DeliveryType> deliveryTypes= new HashSet<>();;
+    private Set<DeliveryType> deliveryTypes= new HashSet<>();
 
     private String pathImage;
 

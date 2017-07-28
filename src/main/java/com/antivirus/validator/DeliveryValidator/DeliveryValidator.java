@@ -23,10 +23,6 @@ public class DeliveryValidator implements Validator{
             throw new DeliveryException(DeliveryValidationMessages.DELIVERY_COST_EXCEPTION);
         }else if (deliveryType.getDaysToArrive()<=0){
             throw new DeliveryException(DeliveryValidationMessages.DELIVERY_DAYS_EXCEPTION);
-        }else if (!String.valueOf(deliveryType.getCost()).matches("[0-9]+")){
-            throw new DeliveryException(DeliveryValidationMessages.DELIVERY_COST_EMPTY);
-        }else if (!String.valueOf(deliveryType.getDaysToArrive()).matches("[0-9]+")){
-            throw new DeliveryException(DeliveryValidationMessages.DELIVERY_DAYS_EMPTY);
         }
     }
 }

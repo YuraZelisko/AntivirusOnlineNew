@@ -19,8 +19,8 @@
     ${deliveryCostException}
     ${deliveryDaysException}
     <sf:input path="deliveryServiceName" placeholder="Delivery Name"/>
-    <sf:input path="cost" placeholder="cost"/>
-    <sf:input path="daysToArrive" placeholder="daysToArrive"/>
+    <sf:input type="number" path="cost" placeholder="cost"/>
+    <sf:input type="number" path="daysToArrive" placeholder="daysToArrive"/>
     <sf:label path="region"><spring:message code="label.region"/></sf:label>
     <sf:select path="region" items="${regions}" itemLabel="name" itemValue="id"/>
 
