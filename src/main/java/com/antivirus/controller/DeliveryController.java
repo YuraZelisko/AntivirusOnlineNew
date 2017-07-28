@@ -1,6 +1,7 @@
 package com.antivirus.controller;
 
 import com.antivirus.Editor.RegionEditor;
+import com.antivirus.dto.DtoUtilMapper;
 import com.antivirus.entity.DeliveryType;
 import com.antivirus.entity.Region;
 import com.antivirus.service.DeliveryTypeService;
@@ -35,7 +36,7 @@ public class DeliveryController {
     public String delivery(Model model){
 
         model.addAttribute("deliveries", deliveryTypeService.findAll());
-        model.addAttribute("regions", regionService.findAll());
+        model.addAttribute("regions", DtoUtilMapper.regionsToRegionsDTO(regionService.findAll()));
         model.addAttribute("delivery", new DeliveryType());
         return "views-admin-delivery";
     }
@@ -57,7 +58,7 @@ public class DeliveryController {
                 model.addAttribute("deliveryDaysException", e.getMessage());
             }
             model.addAttribute("deliveries", deliveryTypeService.findAll());
-            model.addAttribute("regions", regionService.findAll());
+            model.addAttribute("regions", DtoUtilMapper.regionsToRegionsDTO(regionService.findAll()));
             return "views-admin-delivery";
         }
         return "redirect:/delivery";

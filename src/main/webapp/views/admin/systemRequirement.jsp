@@ -13,6 +13,8 @@
 
 <h1 style="text-align: center"><spring:message code="label.system_requirement"/></h1>
 
+
+
 <sf:form modelAttribute="systemRequirement" method="post" action="/systemRequirement">
 
     <p style="color: mediumblue">${SRNameException}</p>
@@ -30,7 +32,8 @@
     <sf:input path="spaceAmount" placeholder="Space Amount"/>
     <sf:input path="RAM" placeholder="RAM"/>
     <sf:input path="OSlanguage" placeholder="OS language"/>
-    <button><spring:message code="label.save_requirements"/></button>
+    <input type="submit" value="<spring:message code="label.save_requirements"/>">
+    <%--<button><spring:message code="label.save_requirements"/></button>--%>
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
 </sf:form>

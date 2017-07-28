@@ -1,5 +1,6 @@
 package com.antivirus.service;
 
+import com.antivirus.dto.RegionDTO;
 import com.antivirus.entity.DeliveryType;
 import com.antivirus.entity.Region;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,5 +18,4 @@ public interface RegionService {
     void delete(int id);
     void update(Region region);
     List<Region> regionWithDeliveries();
-
 }

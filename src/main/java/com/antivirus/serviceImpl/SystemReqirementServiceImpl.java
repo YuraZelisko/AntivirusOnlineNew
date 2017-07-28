@@ -20,12 +20,12 @@ public class SystemReqirementServiceImpl implements SystemRequirementService{
     private SystemRequirementsDao systemRequirementsDao;
 
     @Autowired
-    @Qualifier("userValidator")
+    @Qualifier("systemRequirementsValidator")
     private Validator validator;
 
 
     @Override
-    public void save(SystemRequirements systemRequirements) throws Exception{
+    public void save(SystemRequirements systemRequirements) throws Exception {
 
         validator.validate(systemRequirements);
         systemRequirementsDao.save(systemRequirements);

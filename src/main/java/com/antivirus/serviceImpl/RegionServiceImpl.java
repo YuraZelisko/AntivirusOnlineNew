@@ -1,6 +1,7 @@
 package com.antivirus.serviceImpl;
 
 import com.antivirus.dao.RegionDao;
+import com.antivirus.dto.RegionDTO;
 import com.antivirus.entity.DeliveryType;
 import com.antivirus.entity.Region;
 import com.antivirus.service.RegionService;
@@ -74,6 +75,8 @@ public class RegionServiceImpl implements RegionService{
     public  List<Region> regionWithDeliveries() {
         return regionDao.regionWithDeliveries();
     }
+
+
 //    @Override
 //    public void update(Region region, MultipartFile image) {
 //        regionDao.saveAndFlush(region);

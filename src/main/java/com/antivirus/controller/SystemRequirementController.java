@@ -30,7 +30,6 @@ public class SystemRequirementController {
     @PostMapping("/systemRequirement")
     public String modules(@ModelAttribute("systemRequirement") SystemRequirements systemRequirement, Model model)  {
         try {
-            System.out.println("systemRequirement = [" + systemRequirement + "], model = [" + model + "]");
             systemRequirementService.save(systemRequirement);
         }
         catch (Exception e) {
@@ -42,10 +41,10 @@ public class SystemRequirementController {
            else if (e.getMessage().equals(SystemRequirementsValidationMessages.CHOOSE_BIT_DEPTH)){
                model.addAttribute("SRBitException", e.getMessage());
            }
-           else if (e.getMessage().equals(SystemRequirementsValidationMessages.UNCORRECT_AMOUNT_FIELD)){
+           else if (e.getMessage().equals(SystemRequirementsValidationMessages.INCORRECT_AMOUNT_FIELD)){
                model.addAttribute("SRAmountException", e.getMessage());
 
-           }else if (e.getMessage().equals(SystemRequirementsValidationMessages.UNCORRECT_RAM_FIELD)){
+           }else if (e.getMessage().equals(SystemRequirementsValidationMessages.INCORRECT_RAM_FIELD)){
                model.addAttribute("SRRAMException",e.getMessage());
            }
            else if (e.getMessage().equals(SystemRequirementsValidationMessages.EMPTY_OSLANGUAGE_FIELD)){

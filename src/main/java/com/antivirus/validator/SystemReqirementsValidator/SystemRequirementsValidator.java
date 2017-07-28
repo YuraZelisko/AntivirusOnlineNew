@@ -23,16 +23,16 @@ public class SystemRequirementsValidator implements Validator{
         else if (systemRequirementsDao.findByOSname(systemRequirements.getOSname()) != null) {
             throw new SystemRequirementsException(SystemRequirementsValidationMessages.OSNAME_ALREADY_EXIST);
         }
-        else if (systemRequirements.getBitSystem().isEmpty()) {
+        else if (systemRequirements.getBitSystem().equals(null)) {
             throw new SystemRequirementsException(SystemRequirementsValidationMessages.CHOOSE_BIT_DEPTH);
         }
         else if (systemRequirements.getSpaceAmount() <=0) {
-            throw new SystemRequirementsException(SystemRequirementsValidationMessages.UNCORRECT_AMOUNT_FIELD);
+            throw new SystemRequirementsException(SystemRequirementsValidationMessages.INCORRECT_AMOUNT_FIELD);
         }
         else if (systemRequirements.getRAM() <=0) {
-            throw new SystemRequirementsException(SystemRequirementsValidationMessages.UNCORRECT_RAM_FIELD);
+            throw new SystemRequirementsException(SystemRequirementsValidationMessages.INCORRECT_RAM_FIELD);
         }
-        else if (systemRequirementsDao.findByOSlanguage(systemRequirements.getOSlanguage())!=null) {
+        else if (systemRequirements.getOSlanguage().isEmpty()) {
             throw new SystemRequirementsException(SystemRequirementsValidationMessages.EMPTY_OSLANGUAGE_FIELD);
         }
 
