@@ -13,7 +13,7 @@ public class Product {
 
     private String name;
     private String description;
-    private double price;
+    private int price;
     private int quantityPC;
     private int licenceDurationYears;
     private int productQuantity;
@@ -48,7 +48,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(String name, String description, double price, int quantityPC,
+    public Product(String name, String description, int price, int quantityPC,
                    int licenceDurationYears) {
         this.name = name;
         this.description = description;
@@ -58,7 +58,7 @@ public class Product {
         this.licenceDurationYears= licenceDurationYears;
         }
 
-    public Product(String name, String description, double price,int quantityPC,
+    public Product(String name, String description, int price,int quantityPC,
                    int licenceDurationYears, List<ModulesIncluded> modulesIncludeds,
                    SystemRequirements systemRequirements, String pathImage) {
         this.name = name;
@@ -96,7 +96,7 @@ public class Product {
         this.description = description;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 

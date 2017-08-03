@@ -16,6 +16,7 @@ public interface RegionService {
     List<Region> findAll();
     Region findOne(int id);
     void delete(int id);
-    void update(Region region);
+    void update(Region region) ;
+    void update(Region region, MultipartFile image) ;
     List<Region> regionWithDeliveries();
 }

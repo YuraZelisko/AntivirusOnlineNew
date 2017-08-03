@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -64,9 +66,36 @@ public class ModuleController {
     }
 
     @PostMapping("/updateModule/{id}")
-    public String updateAuthor(@ModelAttribute("module") ModulesIncluded modulesIncluded, @PathVariable int id, Model model) {
+    public String updateModule(@ModelAttribute("module") ModulesIncluded modulesIncluded,
+                               @PathVariable int id, Model model, @PageableDefault Pageable pageble) {
         modulesIncluded.setId(id);
-        modulesIncludedService.update(modulesIncluded);
+//        List<String> names = new ArrayList<>();
+//        int index =0;
+//        for (ModulesIncluded m : modulesIncludedService.findAll()) {
+//            names.add(m.getName());
+//        }
+//        for (int i=0; i<names.size(); i++){
+//
+//            if (modulesIncluded.getName().equals(names.get(i))){
+//                index=i;
+//                i=index+1;
+//            }
+//        }
+
+        try {
+            modulesIncludedService.update(modulesIncluded);
+        } catch (Exception e) {
+            if (e.getMessage().equals(ModuleValidationMessages.NAME_FIELD_IS_EMPTY)) {
+                model.addAttribute("moduleNameException", e.getMessage());
+
+            } else if (e.getMessage().equals(ModuleValidationMessages.DESCRIPTION_FIELD_IS_EMPTY)){
+                model.addAttribute("moduleDescException", e.getMessage());
+            } else if (e.getMessage().equals(ModuleValidationMessages.DESCRIPTION_ALREADY_EXIST))
+                model.addAttribute("moduleDescException", e.getMessage());
+            model.addAttribute("modules", modulesIncludedService.findAllPages(pageble));
+            return "views-admin-updateModule";
+
+        }
         model.addAttribute("module", modulesIncludedService.findAll());
         return "redirect:/modules";
     }

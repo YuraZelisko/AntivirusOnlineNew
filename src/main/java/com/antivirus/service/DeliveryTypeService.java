@@ -13,6 +13,6 @@ public interface DeliveryTypeService {
     List<DeliveryType> findAll();
     DeliveryType findOne(int id);
     void delete(int id);
-    void update(DeliveryType deliveryType);
+    void update(DeliveryType deliveryType) throws Exception;
     List<DeliveryType> deliveryWithRegion();
 }

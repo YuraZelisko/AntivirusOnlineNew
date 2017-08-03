@@ -21,8 +21,8 @@
 
 <div class="hero">
     <div style="text-align: center">
-        <h3 style="color: white"class="btn"><spring:message code="label.Hello_welcome"/> </h3><br>
         <sec:authorize access="!isAuthenticated()">
+        <h3 style="color: white"class="btn"><spring:message code="label.Hello_welcome"/> </h3><br>
             <a style="color: white" class="btn" href="/registration"><spring:message code="label.registration"/></a>
         </sec:authorize>
         <%--<img src="https://static3.esetstatic.com/fileadmin/Images/INT/styles/thank-you-for-downloading/v9/img/1/1024x768.jpg" height="300" width="300">--%>
@@ -35,10 +35,10 @@
                 <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
             </p>
             <label for="price-min"><spring:message code="label.min"/> </label>
-            <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000" onchange="changeLabel()"
+            <input type="range" name="price-min" id="price-min" value="200" min="0" max="3000" onchange="changeLabel()"
                    oninput="searchPrices()">
             <label for="price-max"><spring:message code="label.max"/></label>
-            <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000" onchange="changeLabel()"
+            <input type="range" name="price-max" id="price-max" value="2500" min="0" max="3000" onchange="changeLabel()"
                    oninput="searchPrices()">
         </div>
         <input style="margin-top: 5px" type="text" class="form-control" id="searchIn" oninput="searchInTable()"
@@ -73,11 +73,13 @@
                 <td>${product.price}</td>
                 <td>${product.quantityPC}</td>
                 <td>${product.licenceDurationYears}</td>
-                <td><img src="${product.pathImage}" alt="" width="160px" height="100px"></td>
+                <td><img src="${product.pathImage}" alt="" width="150px" height="150px"></td>
                 <td>
+                    <a href="/modules">
                     <c:forEach var="modulesIncluded" items="${product.modulesIncludeds}">
                         ${modulesIncluded.name}<br>
                     </c:forEach>
+                    </a>
                 </td>
 
                 <td>${product.systemRequirements.OSname}</td>

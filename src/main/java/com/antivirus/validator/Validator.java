@@ -5,4 +5,5 @@ package com.antivirus.validator;
  */
 public interface Validator {
     void  validate(Object o) throws Exception;
+    void validateUpd (Object o) throws Exception;
 }

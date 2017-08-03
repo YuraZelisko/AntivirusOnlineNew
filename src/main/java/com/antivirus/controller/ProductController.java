@@ -9,6 +9,7 @@ import com.antivirus.service.ModulesIncludedService;
 import com.antivirus.service.ProductService;
 import com.antivirus.service.SystemRequirementService;
 //import jdk.internal.cmm.SystemResourcePressureImpl;
+import com.antivirus.validator.ProductValidator.ProductValidationMessages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,8 +57,27 @@ public class ProductController {
     @PostMapping("/product")
     public String saveProduct(@ModelAttribute ("product") Product product,
                               @RequestParam ArrayList<Integer> modulesIncludeds,
-                              @RequestParam("image")MultipartFile image){
-        productService.save(product, modulesIncludeds, image);
+                              @RequestParam("image")MultipartFile image, Model model) {
+        try {
+            productService.save(product, modulesIncludeds, image);
+        } catch (Exception e) {
+            if (e.getMessage().equals(ProductValidationMessages.NAME_IS_EMPTY) ||
+                    e.getMessage().equals(ProductValidationMessages.NAME_ALREADY_EXIST)) {
+                model.addAttribute("productNameException", e.getMessage());
+            } else if (e.getMessage().equals(ProductValidationMessages.DESCRIPTION_IS_EMPTY)) {
+                model.addAttribute("productDescriptionException", e.getMessage());
+            } else if (e.getMessage().equals(ProductValidationMessages.INCORRECT_PRICE)) {
+                model.addAttribute("productPriceException", e.getMessage());
+            } else if (e.getMessage().equals(ProductValidationMessages.INCORRECT_QUANTITY)) {
+                model.addAttribute("productQuantityException", e.getMessage());
+            } else if (e.getMessage().equals(ProductValidationMessages.INCORRECT_LICENCE)) {
+                model.addAttribute("productLicenceException", e.getMessage());
+            }
+                model.addAttribute("products", productService.productIncludedWithModules());
+                model.addAttribute("modulesIncludeds", modulesIncludedService.findAll());
+                model.addAttribute("systemRequirements", systemRequirementService.findAll());
+                return "views-admin-product";
+        }
         return "redirect:/product";
     }
 
@@ -79,21 +99,56 @@ public class ProductController {
 
     @PostMapping("/updateProduct/{id}")
     public String updateProduct(@ModelAttribute ("product") Product product,
-                             @RequestAttribute("image") MultipartFile image,
-                             @PathVariable int id,
+                                @RequestAttribute("image") MultipartFile image,
+                                @PathVariable int id,
 //                             @RequestParam ArrayList<Integer> modulesIncludeds,
-
-                             Model model) {
+                                Model model) {
 
 
         product.setId(id);
 
         if (image==null) {
-            productService.update(product);
+            try {
+                productService.update(product);
+            } catch (Exception e) {
+                if (e.getMessage().equals(ProductValidationMessages.NAME_IS_EMPTY)) {
+                    model.addAttribute("productNameException", e.getMessage());
+                } else if (e.getMessage().equals(ProductValidationMessages.DESCRIPTION_IS_EMPTY)) {
+                    model.addAttribute("productDescriptionException", e.getMessage());
+                } else if (e.getMessage().equals(ProductValidationMessages.INCORRECT_PRICE)) {
+                    model.addAttribute("productPriceException", e.getMessage());
+                } else if (e.getMessage().equals(ProductValidationMessages.INCORRECT_QUANTITY)) {
+                    model.addAttribute("productQuantityException", e.getMessage());
+                } else if (e.getMessage().equals(ProductValidationMessages.INCORRECT_LICENCE)) {
+                    model.addAttribute("productLicenceException", e.getMessage());
+                }
+                model.addAttribute("products", productService.productIncludedWithModules());
+                model.addAttribute("modulesIncludeds", modulesIncludedService.findAll());
+                model.addAttribute("systemRequirements", systemRequirementService.findAll());
+                return "views-admin-product";
+            }
         } else {
-            productService.update(product,
-//                    modulesIncludeds,
-                    image);
+            try {
+                productService.update(product,
+    //                    modulesIncludeds,
+                        image);
+            } catch (Exception e) {
+                if (e.getMessage().equals(ProductValidationMessages.NAME_IS_EMPTY)) {
+                    model.addAttribute("productNameException", e.getMessage());
+                } else if (e.getMessage().equals(ProductValidationMessages.DESCRIPTION_IS_EMPTY)) {
+                    model.addAttribute("productDescriptionException", e.getMessage());
+                } else if (e.getMessage().equals(ProductValidationMessages.INCORRECT_PRICE)) {
+                    model.addAttribute("productPriceException", e.getMessage());
+                } else if (e.getMessage().equals(ProductValidationMessages.INCORRECT_QUANTITY)) {
+                    model.addAttribute("productQuantityException", e.getMessage());
+                } else if (e.getMessage().equals(ProductValidationMessages.INCORRECT_LICENCE)) {
+                    model.addAttribute("productLicenceException", e.getMessage());
+                }
+                model.addAttribute("products", productService.productIncludedWithModules());
+                model.addAttribute("modulesIncludeds", modulesIncludedService.findAll());
+                model.addAttribute("systemRequirements", systemRequirementService.findAll());
+                return "views-admin-product";
+            }
             model.addAttribute("product", productService.findOne(id));
         }
         return "redirect:/product";

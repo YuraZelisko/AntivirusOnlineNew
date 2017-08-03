@@ -17,8 +17,31 @@ public class DeliveryValidator implements Validator{
 
         if (deliveryType.getDeliveryServiceName().isEmpty()){
             throw new DeliveryException(DeliveryValidationMessages.DELIVERY_NAME_EMPTY);
-        }else if (deliveryTypeDao.findByDeliveryServiceName(deliveryType.getDeliveryServiceName())!=null){
+        }else if (deliveryTypeDao.findByDeliveryServiceName(deliveryType.
+                getDeliveryServiceName())!=null) {
             throw new DeliveryException(DeliveryValidationMessages.DELIVERY_NAME_EXIST);
+        }else  if (deliveryType.getCost() <=0){
+            throw new DeliveryException(DeliveryValidationMessages.DELIVERY_COST_EXCEPTION);
+        }else if (deliveryType.getDaysToArrive()<=0){
+            throw new DeliveryException(DeliveryValidationMessages.DELIVERY_DAYS_EXCEPTION);
+        }
+    }
+
+    @Override
+    public void validateUpd(Object o) throws Exception {
+        DeliveryType deliveryType =(DeliveryType) o;
+
+
+        if (deliveryType.getDeliveryServiceName().isEmpty()){
+            throw new DeliveryException(DeliveryValidationMessages.DELIVERY_NAME_EMPTY);
+
+//        }else if (!deliveryType.getDeliveryServiceName().matches(String.valueOf(deliveryTypeDao.
+//                findByDeliveryServiceName(deliveryType.getDeliveryServiceName())))){
+//            if (deliveryTypeDao.findByDeliveryServiceName(deliveryType.
+//                    getDeliveryServiceName())!=null) {
+//                throw new DeliveryException(DeliveryValidationMessages.DELIVERY_NAME_EXIST);
+//            }
+
         }else  if (deliveryType.getCost() <=0){
             throw new DeliveryException(DeliveryValidationMessages.DELIVERY_COST_EXCEPTION);
         }else if (deliveryType.getDaysToArrive()<=0){

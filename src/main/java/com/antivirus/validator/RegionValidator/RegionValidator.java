@@ -23,4 +23,9 @@ public class RegionValidator implements Validator{
             throw  new RegionException(RegionValidationMessages.REGIONNAME_ALREADY_EXISTS);
         }
     }
+
+    @Override
+    public void validateUpd(Object o) throws Exception {
+
+    }
 }

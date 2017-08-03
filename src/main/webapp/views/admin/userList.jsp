@@ -9,10 +9,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="custom" uri="/WEB-INF/custom.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>--%>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--%>
+<sec:authorize access="!hasRole('ROLE_ADMIN')">
+    <h2 style="text-align: center">Only Admin can use this link</h2>
+</sec:authorize>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
 <h1 style="text-align: center"><spring:message code="label.User_List"/> </h1>
 <div>
     <div class="container">
@@ -65,3 +70,4 @@
         </div>
     </div>
 </div>
+</sec:authorize>

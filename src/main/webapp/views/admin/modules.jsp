@@ -10,15 +10,17 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="custom" uri="/WEB-INF/custom.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>--%>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <%--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>--%>
 
 
-
+<div style="margin: 0 0 40px 0">
 
 <h1 style="text-align: center"><spring:message code="label.Modules_Included"/></h1>
 <div style="text-align: center">
+<sec:authorize access="hasRole('ROLE_ADMIN')">
     <sf:form modelAttribute="module" method="post" action="/modules">
         ${moduleNameException}
         ${moduleDescException}
@@ -26,6 +28,7 @@
         <sf:input path="description" placeholder="Description"/>
         <button><spring:message code="label.save_new_module"/> </button>
     </sf:form>
+</sec:authorize>
 </div>
 <div>
     <table class="table table-hover">
@@ -33,9 +36,10 @@
         <tr>
             <th><spring:message code="label.Modules_Included_name"/></th>
             <th><spring:message code="label.Description"/></th>
-
+<sec:authorize access="hasRole('ROLE_ADMIN')">
             <th><spring:message code="label.delete"/></th>
             <th><spring:message code="label.update"/></th>
+</sec:authorize>
         </tr>
         </thead>
         <tbody>
@@ -45,8 +49,10 @@
 
             <td> ${module.name}</td>
             <td> ${module.description}</td>
+                <sec:authorize access="hasRole('ROLE_ADMIN')">
             <td><a href="/deleteModule/${module.id}"><spring:message code="label.delete"/></a></td>
             <td><a href="/updateModule/${module.id}"><spring:message code="label.update"/></a></td>
+                </sec:authorize>
             <br></tr>
         </c:forEach>
         </tbody>
@@ -60,7 +66,7 @@
                 <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><spring:message code="label.Sort"/> <span
                             class="caret"></span>
-
+                    </button>
                     <ul class="dropdown-menu">
                         <custom:sort innerHtml="Name asc" paramValue="name"/>
                         <custom:sort innerHtml="Name desc" paramValue="name,desc"/>
@@ -76,4 +82,5 @@
               </div>
         </div>
     </div>
+</div>
 </div>

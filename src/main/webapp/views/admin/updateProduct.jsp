@@ -3,8 +3,14 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 
+
 <c:url var="saveUrl" value="/updateProduct/${product.id}"/>
 <form:form modelAttribute="product" method="POST" action="${saveUrl}?${_csrf.parameterName}=${_csrf.token}">
+    <p style="color: red">${productNameException}</p>
+    <p style="color: red">${productDescriptionException}</p>
+    <p style="color: red">${productPriceException}</p>
+    <p style="color: red">${productQuantityException}</p>
+    <p style="color: red">${productLicenceException}</p>
     <table>
         <tr>
             <td><form:label path="pathImage">Image:</form:label></td>
@@ -13,27 +19,27 @@
         </tr>
         <tr>
             <td><form:label path="id">Id</form:label></td>
-            <td><form:input path="id" disabled="true"/></td>
+            <td><form:input path="id" disabled="true" /></td>
         </tr>
         <tr>
             <td><form:label path="name">Antivirus Name</form:label></td>
-            <td><form:input path="name"/></td>
+            <td><form:input path="name" id="productName"/></td>
         </tr>
         <tr>
             <td><form:label path="description">Description</form:label></td>
-            <td><form:input path="description"/></td>
+            <td><form:input path="description" /></td>
         </tr>
         <tr>
             <td><form:label path="price">Price</form:label></td>
-            <td><form:input path="price"/></td>
+            <td><form:input path="price" id="productPrice" type="number"/></td>
         </tr>
         <tr>
             <td><form:label path="quantityPC">QuantityPC</form:label></td>
-            <td><form:input path="quantityPC"/></td>
+            <td><form:input path="quantityPC" id="productQuantity" type="number" /></td>
         </tr>
         <tr>
             <td><form:label path="licenceDurationYears">Duration</form:label></td>
-            <td><form:input path="licenceDurationYears"/></td>
+            <td><form:input path="licenceDurationYears" id="productLicence" type="number"/></td>
         </tr>
         <td><form:label path="modulesIncludeds">Modules</form:label></td>
         <td>
@@ -59,5 +65,6 @@
         </tr>
 
     </table>
-    <input type="submit" value="Save"/>
+    <input type="submit" value="Save" id="saveProduct"/>
 </form:form>
+<%--<script src="<c:url value="/js/updateProductValid.js"/>"></script>--%>

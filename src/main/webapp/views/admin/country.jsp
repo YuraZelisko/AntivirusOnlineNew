@@ -23,7 +23,7 @@
                     <input name="images" type="file" class="form-control" required="required"/>
                 </div>
                 <div class="form-group" style="width: 20px; height: 20px">
-                    <input type="button" value="add image" class="btn btn-default" id="addImage">
+                    <input type="button" value="add image" class="btn btn-default" id="addImage" >
                 </div>
                 <div class="form-group">
                     <button class="btn btn-default">save country</button>

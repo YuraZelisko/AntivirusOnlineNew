@@ -13,6 +13,6 @@ public interface SystemRequirementService {
     List<SystemRequirements> findAll();
     SystemRequirements findOne(int id);
     void delete(int id);
-    void update(SystemRequirements systemRequirements);
+    void update(SystemRequirements systemRequirements)throws Exception;
     SystemRequirements systemRequirementsWithProducts(int id);
 }

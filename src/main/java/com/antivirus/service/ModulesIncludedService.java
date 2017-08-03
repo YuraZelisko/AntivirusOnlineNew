@@ -15,7 +15,7 @@ public interface ModulesIncludedService {
     List<ModulesIncluded> findAll();
     ModulesIncluded findOne(int id);
     void delete(int id);
-    void update(ModulesIncluded modulesIncluded);
+    void update(ModulesIncluded modulesIncluded) throws Exception;
 
     Page<ModulesIncluded> findAllPages(Pageable pageable);
 }

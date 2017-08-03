@@ -1,8 +1,10 @@
 package com.antivirus.serviceImpl;
 
+import com.antivirus.dao.DeliveryTypeDao;
 import com.antivirus.dao.OrdersDao;
 import com.antivirus.dao.ProductDao;
 import com.antivirus.dao.UserDao;
+import com.antivirus.entity.DeliveryType;
 import com.antivirus.entity.Orders;
 import com.antivirus.entity.Product;
 import com.antivirus.entity.User;
@@ -92,9 +94,11 @@ public class OrdersServiceImpl implements OrdersService{
     public void getTotalPrice(int id) {
        Orders orders = ordersDao.findOne(id);
         int price = 0 ;
+        DeliveryType deliveryType = new DeliveryType();
+//        int deliveryCost = deliveryTypeDao.findOne(id);
         for (Product product: orders.getProducts())
         {
-            price += product.getPrice() * product.getProductQuantity();
+            price += product.getPrice() * product.getProductQuantity() + deliveryType.getCost();
             orders.setTotalPrice(price);
         }
     }

@@ -16,6 +16,11 @@ public class UserValidator implements Validator {
     private UserDao userDao;
 
     @Override
+    public void validateUpd(Object o) throws Exception {
+
+    }
+
+    @Override
     public void validate(Object o) throws Exception {
 
         User user = (User) o;

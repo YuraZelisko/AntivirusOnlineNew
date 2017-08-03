@@ -86,8 +86,7 @@ public class OrdersController {
     }
 
     @PostMapping("/buy")
-    public String buy(Principal principal, @ModelAttribute("productQuantity") Integer productQuantity)
-    {
+    public String buy(Principal principal, @ModelAttribute("productQuantity") Integer productQuantity) throws Exception {
         User user = userService.findOne(Integer.parseInt(principal.getName()));
         Hibernate.initialize(user.getProducts());
         for (Product product: user.getProducts())

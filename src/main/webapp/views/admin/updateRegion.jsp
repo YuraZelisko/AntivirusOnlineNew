@@ -13,7 +13,7 @@
 
         <tr>
             <td><form:label path="name">Region Name</form:label></td>
-            <td><form:input path="name"/></td>
+            <td><form:input path="name" required="required"/></td>
         </tr>
 
         <tr>

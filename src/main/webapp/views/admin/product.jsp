@@ -14,19 +14,25 @@
 
 <h1 style="text-align: center"><spring:message code="label.Antivirus_Solutions"/></h1>
 
-</div>
+<div>
 <sec:authorize access="hasRole('ROLE_ADMIN')">
 
 
 <sf:form modelAttribute="product" method="post" action="/product?${_csrf.parameterName}=${_csrf.token}"
          enctype="multipart/form-data">
 
+    <p style="color: red">${productNameException}</p>
+    <p style="color: red">${productDescriptionException}</p>
+    <p style="color: red">${productPriceException}</p>
+    <p style="color: red">${productQuantityException}</p>
+    <p style="color: red">${productLicenceException}</p>
+
     <input name="image" type="file" class="form-control"/>
     <input name="name" type="text" placeholder=<spring:message code="label.name"/>>
     <input name="description" type="text" placeholder=<spring:message code="label.Description"/>>
-    <input name="price" type="number" placeholder=<spring:message code="label.Price"/>>
-    <input name="quantityPC" type="number" placeholder=<spring:message code="label.Quantity_PC"/>>
-    <input name="licenceDurationYears" type="number" placeholder=<spring:message code="label.License"/>>
+    <input name="price" type="number" value="1" placeholder=<spring:message code="label.Price"/>>
+    <input name="quantityPC" type="number" value="1"  placeholder=<spring:message code="label.Quantity_PC"/>>
+    <input name="licenceDurationYears" type="number" value="1"   placeholder=<spring:message code="label.License"/>>
 
     <select multiple name="modulesIncludeds">
         <c:forEach var="modulesIncluded" items="${modulesIncludeds}">
@@ -44,7 +50,7 @@
 
 </sf:form>
 </sec:authorize>
-</div>
+
 <table class="table table-hover">
     <thead>
     <tr>
@@ -70,14 +76,16 @@
             <td>${product.price}</td>
             <td>${product.quantityPC}</td>
             <td>${product.licenceDurationYears}</td>
-            <td><img src="${product.pathImage}" alt="" width="160px" height="100px"></td>
+            <td><img src="${product.pathImage}" alt="" width="150px" height="150px"></td>
             <td>
+
                 <c:forEach var="modulesIncluded" items="${product.modulesIncludeds}">
                     ${modulesIncluded.name}<br>
                 </c:forEach>
+
             </td>
 
-            <td>${product.systemRequirements.OSname}</td>
+            <td>${product.systemRequirements.OSname}<br>${product.systemRequirements.bitSystem}</td>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
             <td><a href="/deleteProduct/${product.id}"><spring:message code="label.delete"/> </a></td>
             <td><a href="/updateProduct/${product.id}"><spring:message code="label.update"/> </a></td>
@@ -86,3 +94,4 @@
     </c:forEach>
     </tbody>
 </table>
+</div>

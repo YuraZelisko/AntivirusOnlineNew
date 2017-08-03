@@ -47,7 +47,8 @@ public class SystemReqirementServiceImpl implements SystemRequirementService{
     }
 
     @Override
-    public void update(SystemRequirements systemRequirements) {
+    public void update(SystemRequirements systemRequirements) throws Exception {
+        validator.validateUpd(systemRequirements);
         systemRequirementsDao.save(systemRequirements);
     }
 

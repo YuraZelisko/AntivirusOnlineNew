@@ -24,7 +24,9 @@
         </tr>
         <tr>
             <td><form:label path="description">Description</form:label></td>
-            <td><form:input path="description"/></td>
+            <td><span contenteditable="true" style="display: inline-block; border: solid 1px black; min-width: 50px; max-width: 200px"><form:input  height="150px" width="450px" path="description"/></span></td>
+
+            <%--<td><input name="description" type="text" height=height*2 width=width*5 ></td>--%>
         </tr>
 
     </table>

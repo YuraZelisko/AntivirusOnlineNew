@@ -50,25 +50,25 @@ public class RegionController {
     }
 
     @GetMapping("/updateRegion/{id}")
-    public String getAuthor(@PathVariable int id, Model model) {
+    public String regionUpdate(@PathVariable int id, Model model) {
         model.addAttribute("region", regionService.findOne(id));
         return "views-admin-updateRegion";
     }
 
-//    @PostMapping("/updateRegion/{id}")
-//    public String updateProduct(@ModelAttribute ("region") Region region,
-//                                @RequestAttribute("image") MultipartFile image,
-//                                @PathVariable int id,
-//                                Model model) {
-//        region.setId(id);
-//
-//        if (image.isEmpty()) {
-//            regionService.update(region);
-//        } else {
-//            regionService.save(region, image);
-//            model.addAttribute("region", regionService.findOne(id));
-//        }
-//        return "redirect:/region";
-//    }
+    @PostMapping("/updateRegion/{id}")
+    public String updateProduct(@ModelAttribute ("region") Region region,
+                                @RequestAttribute("image") MultipartFile image,
+                                @PathVariable int id,
+                                Model model) {
+        region.setId(id);
+
+        if (image.isEmpty()) {
+            regionService.update(region);
+        } else {
+             regionService.update(region, image);
+            model.addAttribute("region", regionService.findOne(id));
+        }
+        return "redirect:/region";
+    }
 }
 

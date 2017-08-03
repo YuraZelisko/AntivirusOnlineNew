@@ -51,8 +51,8 @@ public class DeliveryTypeServiceImpl implements DeliveryTypeService {
     }
 
     @Override
-    public void update(DeliveryType deliveryType) {
+    public void update(DeliveryType deliveryType) throws Exception{
+        validator.validateUpd(deliveryType);
         deliveryTypeDao.save(deliveryType);
-
     }
 }

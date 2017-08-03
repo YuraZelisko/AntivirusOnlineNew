@@ -29,6 +29,7 @@ public class ModulesIncludedServiceImpl implements ModulesIncludedService{
     @Override
     public void save(ModulesIncluded modulesIncluded)throws Exception {
         validator.validate(modulesIncluded);
+
         modulesIncludedDao.save(modulesIncluded);
     }
 
@@ -48,7 +49,8 @@ public class ModulesIncludedServiceImpl implements ModulesIncludedService{
     }
 
     @Override
-    public void update(ModulesIncluded modulesIncluded) {
+    public void update(ModulesIncluded modulesIncluded) throws Exception {
+        validator.validateUpd(modulesIncluded);
         modulesIncludedDao.save(modulesIncluded);
     }
 

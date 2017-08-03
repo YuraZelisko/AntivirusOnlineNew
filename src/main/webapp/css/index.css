@@ -4,13 +4,11 @@ body {
 }
 
 .hero {
-    background-image: url("https://s-media-cache-ak0.pinimg.com/originals/e2/71/fd/e271fda72f1e158b5f0569cc72d36d7f.jpg");
     background-size: 130%;
-    background-repeat: repeat;
-    background-position: center;
+    background: url("https://s-media-cache-ak0.pinimg.com/originals/e2/71/fd/e271fda72f1e158b5f0569cc72d36d7f.jpg") repeat center;
     -webkit-animation: slide 40s ease;
     transform: translate3d(0,0,0);
-    height: 130%;
+    height: 200%;
     opacity: 80;
 }
 

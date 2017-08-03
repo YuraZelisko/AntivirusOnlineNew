@@ -32,13 +32,15 @@
     <a href="/profile"><spring:message code="label.PROFILE"/></a>
     <a href="/basket"><spring:message code="label.BASKET"/></a>
     </sec:authorize>
-    <sec:authorize access="isAuthenticated()">
+    <sec:authorize access="hasRole('ROLE_ADMIN')">
     <a href="/product"><spring:message code="label.product_list"/> </a>
+    </sec:authorize>
+    <sec:authorize access="isAuthenticated() ">
+    <a href="/modules"><spring:message code="label.modules"/> </a>
     </sec:authorize>
     <sec:authorize access="hasRole('ROLE_ADMIN')">
     <%--<a href="/opencity"><spring:message code="label.cities"/> </a>--%>
     <a href="/region"><spring:message code="label.region"/> </a>
-    <a href="/modules"><spring:message code="label.modules"/> </a>
     <a href="/userList"><spring:message code="label.User_List"/> </a>
     <a href="/systemRequirement"><spring:message code="label.system_requirement"/></a>
     </sec:authorize>

@@ -20,6 +20,15 @@ public class UserLoginValidator implements Validator {
     @Autowired
     private BCryptPasswordEncoder encoder;
 
+    @Override
+    public void validateUpd(Object o) throws Exception {
+
+    }
+
+    public UserLoginValidator() {
+        super();
+    }
+
 
     @Override
     public void validate(Object o) throws Exception {

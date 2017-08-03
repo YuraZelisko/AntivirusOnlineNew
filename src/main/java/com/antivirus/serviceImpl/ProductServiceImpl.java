@@ -7,7 +7,10 @@ import com.antivirus.entity.ModulesIncluded;
 import com.antivirus.entity.Product;
 import com.antivirus.entity.SystemRequirements;
 import com.antivirus.service.ProductService;
+import com.antivirus.validator.Validator;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,14 +32,17 @@ public class ProductServiceImpl implements ProductService{
     private ModulesIncludedDao modulesIncludedDao;
     @Autowired
     private SystemRequirementsDao systemRequirementsDao;
+    @Autowired
+    @Qualifier("productValidator")
+    private Validator validator;
 
     @Override
     public void save(Product product) {
         productDao.save(product);
     }
 
-    public void save(Product product, ArrayList<Integer> ids, MultipartFile image) {
-
+    public void save(Product product, ArrayList<Integer> ids, MultipartFile image) throws Exception {
+        validator.validate(product);
         productDao.saveAndFlush(product);
 
         String path = System.getProperty("catalina.home") + "/resources/"
@@ -61,9 +67,9 @@ public class ProductServiceImpl implements ProductService{
         productDao.save(product);
     }
 
-    public void update(Product product,  MultipartFile image) {
-
-
+    public void update(Product product,  MultipartFile image) throws Exception{
+//        productDao.saveAndFlush(product);
+            validator.validateUpd(product);
         String path = System.getProperty("catalina.home") + "/resources/"
                 + product.getName() + "/" + image.getOriginalFilename();
 
@@ -87,40 +93,6 @@ public class ProductServiceImpl implements ProductService{
         productDao.save(product);
     }
 
-//    public void save(Product product, ArrayList<Integer> ids, SystemRequirements sr, MultipartFile image) {
-//        System.out.println("ПОМИЛКА"+sr.getOSname());
-//        productDao.saveAndFlush(product);
-//        String path = System.getProperty("catalina.home") + "/resources/"
-//                + product.getName() + "/" + image.getOriginalFilename();
-//
-//        product.setPathImage("resources/" + product.getName() + "/" + image.getOriginalFilename());
-//
-//            System.out.println("продукт"+product.getId());
-//
-//        File filePath = new File(path);
-//
-//        try {
-//            filePath.mkdirs();
-//            image.transferTo(filePath);
-//        } catch (IOException e) {
-//            System.out.println("error with file");
-//        }
-//
-//
-//        for (Integer d : ids) {
-//            ModulesIncluded modulesIncluded = modulesIncludedDao.modulesIncludedWithProducts(d);
-//            product.getModulesIncludeds().add(modulesIncluded);
-//            modulesIncluded.getProducts().add(product);
-//            modulesIncludedDao.save(modulesIncluded);
-//        }
-//
-//        sr.getProducts().add(product);
-//        systemRequirementsDao.save(sr);
-//
-//        productDao.save(product);
-//
-//    }
-
     @Override
     public List<Product> productIncludedWithModules() {
         return productDao.productIncludedWithModules();
@@ -142,7 +114,8 @@ public class ProductServiceImpl implements ProductService{
     }
 
     @Override
-    public void update(Product product) {
+    public void update(Product product) throws Exception {
+        validator.validateUpd(product);
         productDao.save(product);
     }
 

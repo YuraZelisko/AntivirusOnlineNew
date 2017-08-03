@@ -10,7 +10,11 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="!hasRole('ROLE_ADMIN')">
+    <h2 style="text-align: center">Only Admin can use this link</h2>
+</sec:authorize>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
 <h1 style="text-align: center"><spring:message code="label.system_requirement"/></h1>
 
 
@@ -25,12 +29,12 @@
     <sf:input path="OSname" placeholder="OS name"/>
 
     <label for="bit32">x32</label>
-    <input type="radio" name="bitSystem" id="bit32" value="x32" />
+    <input type="radio" name="bitSystem" id="bit32" value="x32" checked="checked"/>
     <label for="bit64">x64</label>
-    <input type="radio" name="bitSystem" id="bit64" value="x64" />
+    <input type="radio" name="bitSystem" id="bit64" value="x64"/>
 
-    <sf:input path="spaceAmount" placeholder="Space Amount"/>
-    <sf:input path="RAM" placeholder="RAM"/>
+    <sf:input path="spaceAmount" type="number"  value="1" placeholder="Space Amount"/>
+    <sf:input path="RAM" type="number" value="1" placeholder="RAM"/>
     <sf:input path="OSlanguage" placeholder="OS language"/>
     <input type="submit" value="<spring:message code="label.save_requirements"/>">
     <%--<button><spring:message code="label.save_requirements"/></button>--%>
@@ -68,7 +72,7 @@
     </c:forEach>
 </tbody>
 </table>
-
+</sec:authorize>
 
 <%--<div style="display: flex; justify-content: center;text-align: center">--%>
 

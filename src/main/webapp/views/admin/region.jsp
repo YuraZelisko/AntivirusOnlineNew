@@ -9,6 +9,11 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<sec:authorize access="!hasRole('ROLE_ADMIN')">
+    <h2 style="text-align: center">Only Admin can use this link</h2>
+</sec:authorize>
+<sec:authorize access="hasRole('ROLE_ADMIN')">
 
 <h1 style="text-align: center"><spring:message code="label.region"/></h1>
 <div>
@@ -48,3 +53,4 @@
     </table>
 </div>
 
+</sec:authorize>

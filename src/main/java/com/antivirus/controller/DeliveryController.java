@@ -49,7 +49,6 @@ public class DeliveryController {
             if (e.getMessage().equals(DeliveryValidationMessages.DELIVERY_NAME_EMPTY)||
                     e.getMessage().equals(DeliveryValidationMessages.DELIVERY_NAME_EXIST)){
                 model.addAttribute("deliveryNameException", e.getMessage());
-                System.out.println("oooooooooooooooooooooooo");
             } else if (e.getMessage().equals(DeliveryValidationMessages.DELIVERY_COST_EMPTY)||
                     e.getMessage().equals(DeliveryValidationMessages.DELIVERY_COST_EXCEPTION)){
                 model.addAttribute("deliveryCostException", e.getMessage());
@@ -83,7 +82,20 @@ public class DeliveryController {
                                @PathVariable int id, Model model) {
         deliveryType.setId(id);
         deliveryType.setRegion(regionService.findOne(regionId));
-        deliveryTypeService.update(deliveryType);
+        try {
+            deliveryTypeService.update(deliveryType);
+        } catch (Exception e) {
+            if (e.getMessage().equals(DeliveryValidationMessages.DELIVERY_NAME_EMPTY)||
+                    e.getMessage().equals(DeliveryValidationMessages.DELIVERY_NAME_EXIST)){
+                model.addAttribute("deliveryNameException", e.getMessage());
+            } else if (e.getMessage().equals(DeliveryValidationMessages.DELIVERY_COST_EXCEPTION)){
+                model.addAttribute("deliveryCostException", e.getMessage());
+            } else if (e.getMessage().equals(DeliveryValidationMessages.DELIVERY_DAYS_EXCEPTION)) {
+                model.addAttribute("deliveryDaysException", e.getMessage());
+            }
+            model.addAttribute("regions", DtoUtilMapper.regionsToRegionsDTO(regionService.findAll()));
+            return "views-admin-updateDelivery";
+        }
         model.addAttribute("delivery", deliveryTypeService.findAll());
         return "redirect:/delivery";
     }

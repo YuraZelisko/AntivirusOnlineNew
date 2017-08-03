@@ -18,10 +18,10 @@ public interface ProductService {
     List<Product> findAll();
     Product findOne(int id);
     void delete(int id);
-    void update(Product product);
+    void update(Product product) throws Exception;
 
-    void save(Product product, ArrayList<Integer> ids, MultipartFile image);
-    void update(Product product, MultipartFile image);
+    void save(Product product, ArrayList<Integer> ids, MultipartFile image) throws Exception;
+    void update(Product product, MultipartFile image) throws Exception;
 //    ArrayList<Integer> ids,
     List<Product> productIncludedWithModules();
 

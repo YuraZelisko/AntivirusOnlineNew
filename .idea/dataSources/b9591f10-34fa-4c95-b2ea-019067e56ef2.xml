@@ -1,401 +1,458 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="antivirus3@localhost">
-  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.1">
+  <database-model serializer="dbm" rdbms="MYSQL" format-version="4.2">
     <root id="1"/>
     <schema id="2" parent="1" name="antivirus3">
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
-    <schema id="3" parent="1" name="0107jdbs"/>
-    <schema id="4" parent="1" name="auction"/>
-    <schema id="5" parent="1" name="authoritet"/>
-    <schema id="6" parent="1" name="autoshop"/>
-    <schema id="7" parent="1" name="bank"/>
-    <schema id="8" parent="1" name="basedate1"/>
-    <schema id="9" parent="1" name="blog"/>
-    <schema id="10" parent="1" name="bookshop"/>
-    <schema id="11" parent="1" name="cookbook"/>
-    <schema id="12" parent="1" name="data_base_yk"/>
-    <schema id="13" parent="1" name="dcd_schema"/>
-    <schema id="14" parent="1" name="dentalbusiness"/>
-    <schema id="15" parent="1" name="eshop"/>
-    <schema id="16" parent="1" name="film"/>
-    <schema id="17" parent="1" name="firstbase"/>
-    <schema id="18" parent="1" name="goods"/>
-    <schema id="19" parent="1" name="guns"/>
-    <schema id="20" parent="1" name="hotel"/>
-    <schema id="21" parent="1" name="ihor99"/>
-    <schema id="22" parent="1" name="information_schema"/>
-    <schema id="23" parent="1" name="jdbc"/>
-    <schema id="24" parent="1" name="jdbc2"/>
-    <schema id="25" parent="1" name="jdbs"/>
-    <schema id="26" parent="1" name="kozodoy"/>
-    <schema id="27" parent="1" name="library"/>
-    <schema id="28" parent="1" name="logos"/>
-    <schema id="29" parent="1" name="melnyk"/>
-    <schema id="30" parent="1" name="myblog"/>
-    <schema id="31" parent="1" name="myfirstdatabasewithjava"/>
-    <schema id="32" parent="1" name="myivn"/>
-    <schema id="33" parent="1" name="mysql"/>
-    <schema id="34" parent="1" name="mywork"/>
-    <schema id="35" parent="1" name="my_shop"/>
-    <schema id="36" parent="1" name="nazar"/>
-    <schema id="37" parent="1" name="nazaruseruser_commodity"/>
-    <schema id="38" parent="1" name="newdb"/>
-    <schema id="39" parent="1" name="northwind"/>
-    <schema id="40" parent="1" name="ordering"/>
-    <schema id="41" parent="1" name="orders"/>
-    <schema id="42" parent="1" name="performance_schema"/>
-    <schema id="43" parent="1" name="project_database"/>
-    <schema id="44" parent="1" name="receipt"/>
-    <schema id="45" parent="1" name="recept"/>
-    <schema id="46" parent="1" name="rudenko"/>
-    <schema id="47" parent="1" name="rudenkotest"/>
-    <schema id="48" parent="1" name="sakila"/>
-    <schema id="49" parent="1" name="sales"/>
-    <schema id="50" parent="1" name="sample"/>
-    <schema id="51" parent="1" name="schooldb"/>
-    <schema id="52" parent="1" name="self_work"/>
-    <schema id="53" parent="1" name="shop"/>
-    <schema id="54" parent="1" name="shopme"/>
-    <schema id="55" parent="1" name="shops"/>
-    <schema id="56" parent="1" name="shopweb"/>
-    <schema id="57" parent="1" name="smth"/>
-    <schema id="58" parent="1" name="smthh"/>
-    <schema id="59" parent="1" name="smthhh"/>
-    <schema id="60" parent="1" name="social"/>
-    <schema id="61" parent="1" name="some_database"/>
-    <schema id="62" parent="1" name="somth"/>
-    <schema id="63" parent="1" name="students"/>
-    <schema id="64" parent="1" name="taktreba"/>
-    <schema id="65" parent="1" name="tarasdb"/>
-    <schema id="66" parent="1" name="test"/>
-    <schema id="67" parent="1" name="testjava"/>
-    <schema id="68" parent="1" name="webshop"/>
-    <schema id="69" parent="1" name="webstore"/>
-    <schema id="70" parent="1" name="web_shop"/>
-    <schema id="71" parent="1" name="world"/>
-    <schema id="72" parent="1" name="yarik"/>
-    <table id="73" parent="2" name="delivery_product"/>
-    <table id="74" parent="2" name="deliverytype"/>
-    <table id="75" parent="2" name="modulesincluded"/>
-    <table id="76" parent="2" name="orders"/>
-    <table id="77" parent="2" name="orders_product"/>
-    <table id="78" parent="2" name="product"/>
-    <table id="79" parent="2" name="region"/>
-    <table id="80" parent="2" name="systemrequirements"/>
-    <table id="81" parent="2" name="user"/>
-    <table id="82" parent="2" name="user_product"/>
-    <column id="83" parent="73" name="delivery_id">
+    <schema id="3" parent="1" name="information_schema"/>
+    <schema id="4" parent="1" name="mysql"/>
+    <schema id="5" parent="1" name="performance_schema"/>
+    <schema id="6" parent="1" name="antivirus"/>
+    <schema id="7" parent="1" name="antivirus2"/>
+    <schema id="8" parent="1" name="drinks"/>
+    <schema id="9" parent="1" name="drink_me"/>
+    <schema id="10" parent="1" name="my_cinema"/>
+    <schema id="11" parent="1" name="my_sql"/>
+    <schema id="12" parent="1" name="sys"/>
+    <table id="13" parent="2" name="city"/>
+    <table id="14" parent="2" name="delivery_orders"/>
+    <table id="15" parent="2" name="delivery_product"/>
+    <table id="16" parent="2" name="deliverytype"/>
+    <table id="17" parent="2" name="modules_product"/>
+    <table id="18" parent="2" name="modulesincluded"/>
+    <table id="19" parent="2" name="orders"/>
+    <table id="20" parent="2" name="orders_product"/>
+    <table id="21" parent="2" name="product"/>
+    <table id="22" parent="2" name="region"/>
+    <table id="23" parent="2" name="systemrequirements"/>
+    <table id="24" parent="2" name="user"/>
+    <table id="25" parent="2" name="user_product"/>
+    <column id="26" parent="13" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="27" parent="13" name="name">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="28" parent="13" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="29" parent="14" name="delivery_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="84" parent="73" name="product_id">
+    <column id="30" parent="14" name="orders_id">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="85" parent="73" name="FK3kdmryvi4kc5e7c8beu1iy6wj">
-      <ColNames>product_id</ColNames>
+    <index id="31" parent="14" name="FKdg1fj61i6qw9hx3luu4jgyoql">
+      <ColNames>orders_id</ColNames>
     </index>
-    <index id="86" parent="73" name="FKkfa6yj17dua6jo5ujxm2fba1l">
+    <index id="32" parent="14" name="FKfh25518flcxlcmp78y35a01wh">
       <ColNames>delivery_id</ColNames>
     </index>
-    <foreign-key id="87" parent="73" name="FKkfa6yj17dua6jo5ujxm2fba1l">
+    <foreign-key id="33" parent="14" name="FKfh25518flcxlcmp78y35a01wh">
+      <ColNames>delivery_id</ColNames>
+      <RefSchemaName>antivirus3</RefSchemaName>
+      <RefTableName>deliverytype</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="34" parent="14" name="FKdg1fj61i6qw9hx3luu4jgyoql">
+      <ColNames>orders_id</ColNames>
+      <RefSchemaName>antivirus3</RefSchemaName>
+      <RefTableName>orders</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="35" parent="15" name="delivery_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="36" parent="15" name="product_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="37" parent="15" name="FK3kdmryvi4kc5e7c8beu1iy6wj">
+      <ColNames>product_id</ColNames>
+    </index>
+    <index id="38" parent="15" name="FKkfa6yj17dua6jo5ujxm2fba1l">
+      <ColNames>delivery_id</ColNames>
+    </index>
+    <foreign-key id="39" parent="15" name="FKkfa6yj17dua6jo5ujxm2fba1l">
       <ColNames>delivery_id</ColNames>
       <RefSchemaName>antivirus3</RefSchemaName>
       <RefTableName>product</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="88" parent="73" name="FK3kdmryvi4kc5e7c8beu1iy6wj">
+    <foreign-key id="40" parent="15" name="FK3kdmryvi4kc5e7c8beu1iy6wj">
       <ColNames>product_id</ColNames>
       <RefSchemaName>antivirus3</RefSchemaName>
       <RefTableName>deliverytype</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="89" parent="74" name="id">
+    <column id="41" parent="16" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="90" parent="74" name="cost">
+    <column id="42" parent="16" name="cost">
       <Position>2</Position>
       <DataType>double|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="91" parent="74" name="deliveryServiceName">
+    <column id="43" parent="16" name="deliveryServiceName">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="92" parent="74" name="localDateTime">
+    <column id="44" parent="16" name="localDateTime">
       <Position>4</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="93" parent="74" name="region_id">
+    <column id="45" parent="16" name="region_id">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <index id="94" parent="74" name="FK9th2nvqt7bi0p1enmr6sx8eig">
+    <column id="46" parent="16" name="daysToArrive">
+      <Position>6</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="47" parent="16" name="FK9th2nvqt7bi0p1enmr6sx8eig">
       <ColNames>region_id</ColNames>
     </index>
-    <key id="95" parent="74" name="PRIMARY">
+    <key id="48" parent="16" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="96" parent="74" name="FK9th2nvqt7bi0p1enmr6sx8eig">
+    <foreign-key id="49" parent="16" name="FK9th2nvqt7bi0p1enmr6sx8eig">
       <ColNames>region_id</ColNames>
       <RefSchemaName>antivirus3</RefSchemaName>
       <RefTableName>region</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="97" parent="75" name="id">
+    <column id="50" parent="17" name="modules_id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="51" parent="17" name="product_id">
+      <Position>2</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="52" parent="17" name="FK7mwu0phhvuqkoatd0hmjusqp9">
+      <ColNames>product_id</ColNames>
+    </index>
+    <index id="53" parent="17" name="FKf69aoyj709sa4ytqv1kn8og7h">
+      <ColNames>modules_id</ColNames>
+    </index>
+    <foreign-key id="54" parent="17" name="FKf69aoyj709sa4ytqv1kn8og7h">
+      <ColNames>modules_id</ColNames>
+      <RefSchemaName>antivirus3</RefSchemaName>
+      <RefTableName>product</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <foreign-key id="55" parent="17" name="FK7mwu0phhvuqkoatd0hmjusqp9">
+      <ColNames>product_id</ColNames>
+      <RefSchemaName>antivirus3</RefSchemaName>
+      <RefTableName>modulesincluded</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="56" parent="18" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="98" parent="75" name="description">
+    <column id="57" parent="18" name="description">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="99" parent="75" name="name">
+    <column id="58" parent="18" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="100" parent="75" name="product_id">
+    <column id="59" parent="18" name="product_id">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <index id="101" parent="75" name="FKktt07snji8imxp6dmjfob76h">
+    <index id="60" parent="18" name="FKktt07snji8imxp6dmjfob76h">
       <ColNames>product_id</ColNames>
     </index>
-    <key id="102" parent="75" name="PRIMARY">
+    <key id="61" parent="18" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="103" parent="75" name="FKktt07snji8imxp6dmjfob76h">
+    <foreign-key id="62" parent="18" name="FKktt07snji8imxp6dmjfob76h">
       <ColNames>product_id</ColNames>
       <RefSchemaName>antivirus3</RefSchemaName>
       <RefTableName>product</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="104" parent="76" name="id">
+    <column id="63" parent="19" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="105" parent="76" name="dateTime">
+    <column id="64" parent="19" name="dateTime">
       <Position>2</Position>
       <DataType>datetime|0</DataType>
     </column>
-    <column id="106" parent="76" name="quantity">
+    <column id="65" parent="19" name="quantity">
       <Position>3</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="107" parent="76" name="totalPrice">
+    <column id="66" parent="19" name="totalPrice">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="108" parent="76" name="user_id">
+    <column id="67" parent="19" name="user_id">
       <Position>5</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <index id="109" parent="76" name="FKsgwj42spshwc3eestq5vk520j">
+    <column id="68" parent="19" name="name">
+      <Position>6</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <index id="69" parent="19" name="FKsgwj42spshwc3eestq5vk520j">
       <ColNames>user_id</ColNames>
     </index>
-    <key id="110" parent="76" name="PRIMARY">
+    <key id="70" parent="19" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="111" parent="76" name="FKsgwj42spshwc3eestq5vk520j">
+    <foreign-key id="71" parent="19" name="FKsgwj42spshwc3eestq5vk520j">
       <ColNames>user_id</ColNames>
       <RefSchemaName>antivirus3</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="112" parent="77" name="orders_id">
+    <column id="72" parent="20" name="orders_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="113" parent="77" name="product_id">
+    <column id="73" parent="20" name="product_id">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="114" parent="77" name="FKfn4v6d8566mbf47wvr3wojtgs">
+    <index id="74" parent="20" name="FKfn4v6d8566mbf47wvr3wojtgs">
       <ColNames>orders_id</ColNames>
     </index>
-    <index id="115" parent="77" name="FKh659mxh92hi6jxwy6ufbwk35x">
+    <index id="75" parent="20" name="FKh659mxh92hi6jxwy6ufbwk35x">
       <ColNames>product_id</ColNames>
     </index>
-    <foreign-key id="116" parent="77" name="FKfn4v6d8566mbf47wvr3wojtgs">
+    <foreign-key id="76" parent="20" name="FKfn4v6d8566mbf47wvr3wojtgs">
       <ColNames>orders_id</ColNames>
       <RefSchemaName>antivirus3</RefSchemaName>
       <RefTableName>product</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="117" parent="77" name="FKh659mxh92hi6jxwy6ufbwk35x">
+    <foreign-key id="77" parent="20" name="FKh659mxh92hi6jxwy6ufbwk35x">
       <ColNames>product_id</ColNames>
       <RefSchemaName>antivirus3</RefSchemaName>
       <RefTableName>orders</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="118" parent="78" name="id">
+    <column id="78" parent="21" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="119" parent="78" name="description">
+    <column id="79" parent="21" name="description">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="120" parent="78" name="linseceDurationYears">
+    <column id="80" parent="21" name="name">
       <Position>3</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-    </column>
-    <column id="121" parent="78" name="name">
-      <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="122" parent="78" name="price">
-      <Position>5</Position>
+    <column id="81" parent="21" name="price">
+      <Position>4</Position>
       <DataType>double|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="123" parent="78" name="quantityPC">
-      <Position>6</Position>
+    <column id="82" parent="21" name="quantityPC">
+      <Position>5</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="124" parent="78" name="typeOfLinsence">
-      <Position>7</Position>
+    <column id="83" parent="21" name="typeOfLinsence">
+      <Position>6</Position>
       <DataType>bit(1)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <key id="125" parent="78" name="PRIMARY">
+    <column id="84" parent="21" name="pathImage">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="85" parent="21" name="licenceDurationYears">
+      <Position>8</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="86" parent="21" name="systemRequirements_id">
+      <Position>9</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <index id="87" parent="21" name="FKl49ld5tbells5ccd8nmbrtdde">
+      <ColNames>systemRequirements_id</ColNames>
+    </index>
+    <key id="88" parent="21" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="126" parent="79" name="id">
+    <foreign-key id="89" parent="21" name="FKl49ld5tbells5ccd8nmbrtdde">
+      <ColNames>systemRequirements_id</ColNames>
+      <RefSchemaName>antivirus3</RefSchemaName>
+      <RefTableName>systemrequirements</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="90" parent="22" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="127" parent="79" name="name">
+    <column id="91" parent="22" name="name">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="128" parent="79" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>id</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="129" parent="80" name="id">
-      <Position>1</Position>
-      <DataType>int(11)|0</DataType>
-      <NotNull>1</NotNull>
-      <SequenceIdentity>1</SequenceIdentity>
-    </column>
-    <column id="130" parent="80" name="OSlanguage">
-      <Position>2</Position>
-      <DataType>varchar(255)|0</DataType>
-    </column>
-    <column id="131" parent="80" name="OSname">
+    <column id="92" parent="22" name="pathImage">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="132" parent="80" name="RAM">
+    <key id="93" parent="22" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="94" parent="23" name="id">
+      <Position>1</Position>
+      <DataType>int(11)|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="95" parent="23" name="OSlanguage">
+      <Position>2</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="96" parent="23" name="OSname">
+      <Position>3</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <column id="97" parent="23" name="RAM">
       <Position>4</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="133" parent="80" name="bitSystem">
+    <column id="98" parent="23" name="bitSystem">
       <Position>5</Position>
       <DataType>bit(1)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="134" parent="80" name="spaceAmount">
+    <column id="99" parent="23" name="spaceAmount">
       <Position>6</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="135" parent="80" name="product_id">
+    <column id="100" parent="23" name="product_id">
       <Position>7</Position>
       <DataType>int(11)|0</DataType>
     </column>
-    <index id="136" parent="80" name="FKpkb4f554yujrvydl38tgctf16">
+    <index id="101" parent="23" name="FKpkb4f554yujrvydl38tgctf16">
       <ColNames>product_id</ColNames>
     </index>
-    <key id="137" parent="80" name="PRIMARY">
+    <key id="102" parent="23" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="138" parent="80" name="FKpkb4f554yujrvydl38tgctf16">
+    <foreign-key id="103" parent="23" name="FKpkb4f554yujrvydl38tgctf16">
       <ColNames>product_id</ColNames>
       <RefSchemaName>antivirus3</RefSchemaName>
       <RefTableName>product</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <column id="139" parent="81" name="id">
+    <column id="104" parent="24" name="id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
     </column>
-    <column id="140" parent="81" name="email">
+    <column id="105" parent="24" name="email">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="141" parent="81" name="name">
+    <column id="106" parent="24" name="name">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <column id="142" parent="81" name="password">
+    <column id="107" parent="24" name="password">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
     </column>
-    <key id="143" parent="81" name="PRIMARY">
+    <column id="108" parent="24" name="role">
+      <Position>5</Position>
+      <DataType>int(11)|0</DataType>
+    </column>
+    <column id="109" parent="24" name="enable">
+      <Position>6</Position>
+      <DataType>bit(1)|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="110" parent="24" name="uuid">
+      <Position>7</Position>
+      <DataType>varchar(255)|0</DataType>
+    </column>
+    <key id="111" parent="24" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="144" parent="82" name="user_id">
+    <column id="112" parent="25" name="user_id">
       <Position>1</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="145" parent="82" name="product_id">
+    <column id="113" parent="25" name="product_id">
       <Position>2</Position>
       <DataType>int(11)|0</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="146" parent="82" name="FKf4ynufhjqptdpbq4g7qxm6qhg">
+    <index id="114" parent="25" name="FKf4ynufhjqptdpbq4g7qxm6qhg">
       <ColNames>product_id</ColNames>
     </index>
-    <index id="147" parent="82" name="FKrddxxxw1c4mv1u7d1kg2os7u5">
+    <index id="115" parent="25" name="FKrddxxxw1c4mv1u7d1kg2os7u5">
       <ColNames>user_id</ColNames>
     </index>
-    <foreign-key id="148" parent="82" name="FKrddxxxw1c4mv1u7d1kg2os7u5">
+    <foreign-key id="116" parent="25" name="FKrddxxxw1c4mv1u7d1kg2os7u5">
       <ColNames>user_id</ColNames>
       <RefSchemaName>antivirus3</RefSchemaName>
       <RefTableName>user</RefTableName>
       <RefColNames>id</RefColNames>
     </foreign-key>
-    <foreign-key id="149" parent="82" name="FKf4ynufhjqptdpbq4g7qxm6qhg">
+    <foreign-key id="117" parent="25" name="FKf4ynufhjqptdpbq4g7qxm6qhg">
       <ColNames>product_id</ColNames>
       <RefSchemaName>antivirus3</RefSchemaName>
       <RefTableName>product</RefTableName>

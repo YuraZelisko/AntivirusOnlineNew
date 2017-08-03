@@ -8,13 +8,14 @@
         <thead>
         <tr>
             <c:if test="${userBasket.products.size() == 0}">
-                Basket is empty!!!
+                <spring:message code="label.emptyBasket"/>
             </c:if>
             <c:if test="${userBasket.products.size() != 0}">
                 <th><spring:message code="label.name"/></th>
                 <th><spring:message code="label.Description"/></th>
                 <th><spring:message code="label.Price"/></th>
                 <th><spring:message code="label.delivery_type"/></th>
+                <th><spring:message code="label.quantity"/></th>
                 <th><spring:message code="label.delete"/></th>
             </c:if>
         </tr>

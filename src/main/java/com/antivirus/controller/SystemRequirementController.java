@@ -33,14 +33,13 @@ public class SystemRequirementController {
             systemRequirementService.save(systemRequirement);
         }
         catch (Exception e) {
-            System.out.println("ываываавыпавпвапвапвапвапЭ");
            if (e.getMessage().equals(SystemRequirementsValidationMessages.EMPTY_OSNAME_FIELD) ||
                    e.getMessage().equals(SystemRequirementsValidationMessages.OSNAME_ALREADY_EXIST)){
                model.addAttribute("SRNameException", e.getMessage());
            }
-           else if (e.getMessage().equals(SystemRequirementsValidationMessages.CHOOSE_BIT_DEPTH)){
-               model.addAttribute("SRBitException", e.getMessage());
-           }
+//           else if (e.getMessage().equals(SystemRequirementsValidationMessages.CHOOSE_BIT_DEPTH)){
+//               model.addAttribute("SRBitException", e.getMessage());
+//           }
            else if (e.getMessage().equals(SystemRequirementsValidationMessages.INCORRECT_AMOUNT_FIELD)){
                model.addAttribute("SRAmountException", e.getMessage());
 
@@ -70,9 +69,29 @@ public class SystemRequirementController {
     @PostMapping("/updateSystemRequirement/{id}")
     public String updateSystem(@ModelAttribute("systemRequirement") SystemRequirements systemRequirements, @PathVariable int id, Model model) {
         systemRequirements.setId(id);
-        systemRequirementService.update(systemRequirements);
-        model.addAttribute("systemRequirement", systemRequirementService.findAll());
-        return "redirect:/systemRequirement";
+        try {
+            systemRequirementService.update(systemRequirements);
+            return "redirect:/systemRequirement";
+        } catch (Exception e) {
+            if (e.getMessage().equals(SystemRequirementsValidationMessages.EMPTY_OSNAME_FIELD)){
+                model.addAttribute("SRNameException", e.getMessage());
+            }
+//           else if (e.getMessage().equals(SystemRequirementsValidationMessages.CHOOSE_BIT_DEPTH)){
+//               model.addAttribute("SRBitException", e.getMessage());
+//           }
+            else if (e.getMessage().equals(SystemRequirementsValidationMessages.INCORRECT_AMOUNT_FIELD)){
+                model.addAttribute("SRAmountException", e.getMessage());
+
+            }else if (e.getMessage().equals(SystemRequirementsValidationMessages.INCORRECT_RAM_FIELD)){
+                model.addAttribute("SRRAMException",e.getMessage());
+            }
+            else if (e.getMessage().equals(SystemRequirementsValidationMessages.EMPTY_OSLANGUAGE_FIELD)){
+                model.addAttribute("SRLangException", e.getMessage());
+            }
+            model.addAttribute("systemRequirements", systemRequirementService.findAll());
+            return "views-admin-updateSystemRequirement";
+        }
+
     }
 
 }
