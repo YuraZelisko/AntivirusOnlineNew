@@ -82,7 +82,8 @@
                     </a>
                 </td>
 
-                <td>${product.systemRequirements.OSname}</td>
+                <td>${product.systemRequirements.OSname}<br>${product.systemRequirements.bitSystem}</td>
+
                 <sec:authorize access="hasRole('ROLE_USER')">
                 <td><a href="/addToBasket/${product.id}"><spring:message code="label.InBasket"/></a></td>
                 </sec:authorize>
