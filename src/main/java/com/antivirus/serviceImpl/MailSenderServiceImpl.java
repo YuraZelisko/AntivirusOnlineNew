@@ -14,7 +14,7 @@ import java.util.Properties;
 @Service
 public class MailSenderServiceImpl implements MailSenderService {
     private final String EMAIL_FROM = "meteoritKIDS@gmail.com";
-    private final String EMAIL_PASSWORD = "limonadik";
+    private final String EMAIL_PASSWORD = "*********";
 
     @Override
     public void sendMail(String theme, String mailBody, String email) {
